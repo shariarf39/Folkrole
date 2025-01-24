@@ -1,0 +1,159 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.login_page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 0 auto;
+    padding: 1rem 0 1.5rem 0;
+    width: 100%;
+    background-color: #f0f0f0;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login_page form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 4rem 3rem;
+    background: linear-gradient(90deg, aqua, #61ffa3, #00ff00);
+    width: 400px;
+    box-shadow: 0 .5rem 1rem gray;
+    border-radius: 10px;
+}
+
+.institute_name {
+    background: linear-gradient(45deg, red, rgb(255, 0, 255), aqua);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Pacifico', cursive;
+    text-align: center;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.login_page .login img {
+    max-width: 10%;
+}
+
+.login_page .login p {
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 10px auto;
+}
+
+.login_page form label {
+    font-size: 1rem;
+    font-weight: normal;
+    color: black;
+    padding: 0.5rem 0;
+    width: 100%;
+}
+
+.login_page form input {
+    outline: none;
+    font-size: 1rem;
+    padding: 0.7rem;
+    width: 100%;
+    border: none;
+    border-radius: 0.2rem;
+}
+
+.login_page form label button {
+    font-size: 1.2rem;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.8rem;
+    text-transform: uppercase;
+    background-color: blue;
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s ease;
+}
+
+.login_page form label button:hover {
+    cursor: pointer;
+    background-color: red;
+}
+
+.login_page form label .signup {
+    color: blue;
+    text-decoration: none;
+}
+
+.login_page form label .signup:hover {
+    text-decoration: underline;
+}
+
+
+.password-container {
+    position: relative;
+    width: 100%;
+}
+
+.password-container input {
+    width: 100%;
+    padding-right: 2.5rem;
+}
+
+.password-container i {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: gray;
+    transition: color 0.3s ease;
+}
+
+.password-container i:hover {
+    color: black;
+}
+
+@media (max-width: 768px) {
+    .login_page {
+        padding: 2rem;
+    }
+
+    .login_page form {
+        width: 90%;
+        padding: 1rem;
+    }
+
+    .login_page .login img {
+        max-width: 15%;
+    }
+
+    .login_page form label {
+        font-size: 1rem;
+        padding: 0.5rem 0;
+    }
+
+    .login_page form input {
+        font-size: 0.9rem;
+    }
+
+    .login_page form label button {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+    }
+}

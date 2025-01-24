@@ -1,0 +1,107 @@
+body,
+h1,
+h2,
+p,
+input,
+button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #fdf9f4;
+    color: #333;
+}
+
+
+main {
+    padding: 1rem;
+    max-width: 600px;
+    margin: auto;
+}
+
+.donation-description {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.donation-description h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: black;
+}
+
+.donation-description p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+form {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+form label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: black;
+}
+
+form input[type="text"],
+form input[type="mail"],
+form input[type="number"],
+form input[type="tel"],
+form button {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    outline: none;
+}
+
+form input[type="number"]::-webkit-inner-spin-button,
+form input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+form button {
+    background: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+form button:hover {
+    background: black;
+}
+
+
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .donation-description h2 {
+        font-size: 1.4rem;
+    }
+
+    form {
+        padding: 1rem;
+    }
+
+    form button {
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,106 @@
+.page-header {
+    background: #4CAF50;
+    color: white;
+    padding: 1rem 0.5rem;
+    text-align: center;
+}
+
+.page-header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.container_management {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.management_card {
+    background: white;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.management_card h2,
+.title_add {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.management_card p {
+    margin: 0.5rem 0;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    resize: vertical;
+    font-size: 1.2rem;
+}
+
+.form-group button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.2rem;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: .5s ease;
+}
+
+.form-group button:hover {
+    background: #45a049;
+}
+
+.dellet {
+    font-size: 1rem;
+    padding: .3rem 2rem;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    background-color: blue;
+    transition: .5s ease;
+
+    &:hover {
+        color: white;
+        background-color: red;
+    }
+}
+
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    page-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .management_card {
+        margin: 0.5rem;
+        padding: 0.7rem;
+    }
+
+    .form-group button {
+        width: 100%;
+    }
+}
