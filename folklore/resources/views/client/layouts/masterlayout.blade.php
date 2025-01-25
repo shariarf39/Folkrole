@@ -14,37 +14,50 @@
 
     <!-- Navbar Section -->
 
-<header id="header">
-    <div class="container">
-        <div class="logo">
-            <a href="{{ route('home') }}">
-                <img src="img/bifcd_logos.png" alt="BIFCD Logo">
-            </a>
+
+    <header id="header">
+
+
+        <div class="container">
+
+
+            <div class="logo">
+                <a href="{{ route('home')}}"><img src="img/bifcd_logos.png" alt="BIFCD Logo"></a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                        <li><a href="{{ route('home')}}">Home</a></li>
+                    <li>
+                        <a href="">Who We Are ▾</a>
+                        <ul class="dropdown">
+                            <li><a href="{{route('aboutpage')}}">About Us</a></li>
+                            <li><a href="{{route('management')}}">Management</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{{route('newsevent')}}">News & Events</a></li>
+                    <li><a href="{{route('gallerysec')}}">Gallery</a></li>
+                    <li><a href="{{route('Publications')}}">Publications</a></li>
+                    <li><a href="{{route('contactus')}}">Contact Us</a></li>
+                    <li><a href="{{route('donate')}}">Donate</a></li>
+                </ul>
+
+
+            </nav>
+            <div class="login_and_reg">
+                <a href="{{route('userLogin')}}" class="join-btn login">Login</a>
+                <a href="{{route('userregistration')}}" class="join-btn registration">Reigstration</a>
+            </div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+
         </div>
-        <nav>
-            <button id="menu-toggle" class="menu-toggle" aria-label="Toggle navigation">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="{{ route('home') }}">Home</a></li>
-                <li>
-                    <a href="#">Who We Are ▾</a>
-                    <ul class="dropdown">
-                        <li><a href="{{ route('aboutpage') }}">About Us</a></li>
-                        <li><a href="{{ route('management') }}">Management</a></li>
-                    </ul>
-                </li>
-                <li><a href="{{ route('newsevent') }}">News & Events</a></li>
-                <li><a href="{{ route('gallerysec') }}">Gallery</a></li>
-                <li><a href="{{ route('Publications') }}">Publications</a></li>
-                <li><a href="{{ route('contactus') }}">Contact Us</a></li>
-                <li><a href="{{ route('donate') }}">Donate</a></li>
-                <li><a href="{{ route('userLogin') }}" class="join-btn login">Sign in</a></li>
-                <li><a href="{{ route('userregistration') }}" class="join-btn registration">Sign up</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
+
+
+    </header>
 
 
 
