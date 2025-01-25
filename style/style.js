@@ -1,58 +1,40 @@
 let slideIndex = 0;
-let direction = 1;
 const slides = document.querySelector('.slides');
 const dots = document.querySelectorAll('.dot');
+const prevButton = document.querySelector('.prev');
+const nextButton = document.querySelector('.next');
 
 function showSlide(index) {
-    const totalSlides = slides?.children.length || 0;
+    const totalSlides = slides.children.length;
 
-    if (!slides || index < 0 || index >= totalSlides) return;
+    if (index < 0) slideIndex = totalSlides - 1;
+    else if (index >= totalSlides) slideIndex = 0;
+    else slideIndex = index;
 
-    slides.style.transform = `translateX(-${index * 100}%)`;
+    slides.style.transform = `translateX(-${slideIndex * 100}%)`;
 
     dots.forEach(dot => dot.classList.remove('active'));
-    dots[index]?.classList.add('active');
-}
-
-function nextSlide() {
-    const totalSlides = slides?.children.length || 0;
-
-    if (totalSlides === 0) return;
-
-    slideIndex += direction;
-
-    if (slideIndex >= totalSlides - 1) {
-        direction = -1;
-    }
-
-    if (slideIndex <= 0) {
-        direction = 1;
-    }
-
-    showSlide(slideIndex);
+    dots[slideIndex]?.classList.add('active');
 }
 
 dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-        slideIndex = index;
-        direction = index === 0 ? 1 : -1;
-        showSlide(slideIndex);
-    });
+    dot.addEventListener('click', () => showSlide(index));
 });
 
-setInterval(nextSlide, 3000);
-
-function changeSlide(dir) {
-    direction = dir;
-    nextSlide();
+function changeSlide(direction) {
+    showSlide(slideIndex + direction);
 }
 
+prevButton.addEventListener('click', () => changeSlide(-1));
+nextButton.addEventListener('click', () => changeSlide(1));
+setInterval(() => changeSlide(1), 3000);
 
-const prevSlideButton = document.querySelector('.prev');
-const nextSlideButton = document.querySelector('.next');
 
-prevSlideButton?.addEventListener('click', () => changeSlide(-1)); 
-nextSlideButton?.addEventListener('click', () => changeSlide(1));
+
+
+
+
+
 
 
 const hamburger = document.querySelector('.hamburger');
@@ -73,8 +55,6 @@ hamburger?.addEventListener('click', () => {
 
 // Auto Slide
 const autoSlides = document.querySelector('.auto_slides');
-const prevButtonAuto = document.querySelector('.previi');
-const nextButtonAuto = document.querySelector('.nextii');
 const totalItems = 7;
 const itemsPerSlide = 4;
 let currentIndex = 0;
@@ -149,9 +129,3 @@ function changeGallerySlide(dir) {
 
     showGallerySlide(galleryIndex);
 }
-
-const prevGalleryButton = document.querySelector('.previi');
-const nextGalleryButton = document.querySelector('.nextii');
-
-prevGalleryButton?.addEventListener('click', () => changeGallerySlide(-1));
-nextGalleryButton?.addEventListener('click', () => changeGallerySlide(1));

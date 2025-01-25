@@ -43,8 +43,8 @@
 
             </nav>
             <div class="login_and_reg">
-                <a href="{{route('userLogin')}}" class="join-btn">Login</a>
-                <a href="{{route('userregistration')}}" class="join-btn">Reigstration</a>
+                <a href="{{route('userLogin')}}" class="join-btn login">Login</a>
+                <a href="{{route('userregistration')}}" class="join-btn registration">Reigstration</a>
             </div>
             <div class="hamburger" onclick="toggleMenu()">
                 <div></div>

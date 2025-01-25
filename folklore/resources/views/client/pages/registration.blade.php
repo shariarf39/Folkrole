@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <div class="login_page">
+
+        <form action="">
         <div class="login">
             <img src="{{ asset('img/bifcd_lgo.png') }}" alt="Logo">
-            <p>Sign in to <a href="{{ route('home') }}" class="institute_name">B I F C D</a></p>
+            <p>Sign up to <a href="{{ route('home') }}" class="institute_name">B I F C D</a></p>
         </div>
-        <form action="">
         <label for="mail_or_num">Name:</label>
         <input type="text" id="mail_or_num" name="name"  placeholder="Name" required>
             <label for="mail_or_num">E-mail :</label>
@@ -32,7 +33,9 @@
             <label for="button">
                 <button>Sign Up</button>
             </label>
-            
+            <label for="sign_up">
+                <p>Already have an account? <a href="{{ route('userLogin') }}" class="signup">Sign In</a></p>
+            </label>
             
         </form>
     </div>

@@ -74,7 +74,6 @@ hr {
     padding: 10px 2rem;
     text-align: center;
     position: sticky;
-    /* Changed to sticky */
     top: 0;
     left: 0;
     z-index: 1001;
@@ -203,22 +202,26 @@ nav {
     border-radius: 20px;
     text-decoration: none;
     font-weight: bold;
-    transition: background 1s;
+    transition: background 1s, transform 0.2s;
     margin-left: .5rem;
 }
 
 .join-btn:hover {
     background: black;
     color: white;
+    transform: scale(1.05);
 }
 
 
-
+.registration {
+    display: none;
+}
 
 
 
 /* Home Slider Section */
 
+/* Slider styles */
 .slider {
     position: relative;
     width: 100%;
@@ -241,7 +244,6 @@ nav {
     padding: 8rem 10rem;
     background: linear-gradient(to right, #4caf50, #2196f3);
     color: white;
-    position: relative;
 }
 
 .slide img {
@@ -260,10 +262,6 @@ nav {
     padding: 5px 10px;
     margin-bottom: 10px;
     font-size: 0.9em;
-
-    &:hover {
-        cursor: default;
-    }
 }
 
 .content h2 {
@@ -307,7 +305,6 @@ nav {
     border-radius: 50%;
     cursor: pointer;
     transition: background 0.3s;
-    margin-bottom: 5px;
 }
 
 .dot.active {
@@ -330,7 +327,6 @@ nav {
     align-items: center;
     justify-content: center;
     z-index: 10;
-    transition: background 0.3s;
 }
 
 .prev:hover,
@@ -346,24 +342,7 @@ nav {
     right: 10px;
 }
 
-@media (max-width: 1024px) {
-    .slide {
-        padding: 6rem 8rem;
-    }
-
-    .content {
-        margin-bottom: 2rem;
-    }
-
-    .content h2 {
-        font-size: 1.8em;
-    }
-
-    .content p {
-        font-size: 1em;
-    }
-}
-
+/* Responsive styles */
 @media (max-width: 768px) {
     .slide {
         flex-direction: column-reverse;
@@ -375,45 +354,11 @@ nav {
         margin-bottom: 2rem;
     }
 
-    .content {
-        width: 100%;
-        text-align: center;
-        margin-bottom: 2rem;
-    }
-
-    .content h2 {
-        font-size: 1.5em;
-    }
-
-    .content p {
-        font-size: 0.9em;
-    }
-}
-
-@media (max-width: 480px) {
-    .slide {
-        padding: 2rem 1rem;
-    }
-
-    .slide img {
-        width: 100%;
-    }
-
-    .content h2 {
-        font-size: 1.2em;
-    }
-
-    .content p {
-        font-size: 0.8em;
-    }
-
-    .btn {
-        padding: 8px 16px;
-        font-size: 0.9em;
-    }
-
-    .content {
-        margin-bottom: 2rem;
+    .prev,
+    .next {
+        width: 30px;
+        height: 30px;
+        font-size: 1.5rem;
     }
 }
 
@@ -806,6 +751,40 @@ button.nextii:hover {
     right: 10px;
 }
 
+
+
+@media (max-width: 1200px) {
+    .gallery_slide {
+        flex: 0 0 33.33%;
+    }
+}
+
+@media (max-width: 992px) {
+    .gallery_slide {
+        flex: 0 0 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery_slide {
+        flex: 0 0 100%;
+    }
+
+    .previi,
+    .nextii {
+        display: flex;
+    }
+}
+
+@media (max-width: 576px) {
+    .gallery {
+        padding: 3rem 0;
+    }
+
+    .gallery_slide img {
+        height: auto;
+    }
+}
 
 
 /* news&Events Section */
@@ -1430,15 +1409,12 @@ footer {
 @media (max-width: 768px) {
     .footer_sec {
         flex-direction: column;
-        align-items: center;
         padding: 2rem 1rem;
     }
 
     .footer_box {
         width: 100%;
         margin: 1rem 0;
-        align-items: center;
-        text-align: center;
     }
 
     .footer_box p,
@@ -1460,7 +1436,6 @@ footer {
     .footer_text {
         flex-direction: column;
         align-items: center;
-        text-align: center;
         padding: 1rem;
     }
 
@@ -1520,6 +1495,7 @@ footer {
         width: 200px;
         border: 1px solid #ccc;
         border-radius: 5px;
+        padding: 2rem;
     }
 
     .nav-links.active {
@@ -1528,6 +1504,10 @@ footer {
 
     .join-btn {
         display: none;
+    }
+
+    .login {
+        display: block;
     }
 
     .hamburger {
@@ -1542,4 +1522,24 @@ footer {
         height: 3px;
         background: #333;
     }
+}
+
+
+
+
+.join-btn {
+    background-color: blue;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 1s, transform 0.2s;
+    margin-left: .5rem;
+}
+
+.join-btn:hover {
+    background: black;
+    color: white;
+    transform: scale(1.05);
 }

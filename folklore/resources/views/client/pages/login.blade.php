@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <div class="login_page">
-        <div class="login">
-            <img src="{{ asset('img/bifcd_lgo.png') }}" alt="Logo">
-            <p>Sign in to <a href="{{ route('home') }}" class="institute_name">B I F C D</a></p>
-        </div>
+
         <form action="">
+            <div class="login">
+                <img src="{{ asset('img/bifcd_lgo.png') }}" alt="Logo">
+                <p>Sign in to <a href="{{ route('home') }}" class="institute_name">B I F C D</a></p>
+        </div>
             <label for="mail_or_num">E-mail or Number:</label>
             <input type="text" id="mail_or_num" placeholder="Enter your mail or number" required>
             
