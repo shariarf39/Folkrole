@@ -36,12 +36,19 @@ setInterval(() => changeSlide(1), 3000);
 
 
 
+// navbar
 
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
+document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
 
-hamburger?.addEventListener('click', () => {
-    navLinks?.classList.toggle('active');
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+        document.body.classList.toggle('nav-open');
+        menuToggle.innerHTML = navLinks.classList.contains('show')
+            ? '<i class="fa-solid fa-x"></i>' 
+            : '<i class="fa-solid fa-bars"></i>';
+    });
 });
 
 

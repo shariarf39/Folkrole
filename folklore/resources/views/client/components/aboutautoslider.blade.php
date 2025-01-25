@@ -20,8 +20,8 @@
 
 
         </div>
-        <button class="previi">&#10094;</button>
-        <button class="nextii">&#10095;</button>
+        <!-- <button class="previi">&#10094;</button>
+        <button class="nextii">&#10095;</button> -->
     </div>
 
 
