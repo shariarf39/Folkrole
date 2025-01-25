@@ -8,7 +8,8 @@
 
     <div class="login_page">
 
-        <form action="">
+        <form action="{{ route('userRegister') }}" method="POST">
+        @csrf
         <div class="login">
             <img src="{{ asset('img/bifcd_lgo.png') }}" alt="Logo">
             <p>Sign up to <a href="{{ route('home') }}" class="institute_name">B I F C D</a></p>
@@ -34,7 +35,7 @@
                 <button>Sign Up</button>
             </label>
             <label for="sign_up">
-                <p>Already have an account? <a href="{{ route('userLogin') }}" class="signup">Sign In</a></p>
+                <p>Already have an account? <a href="{{ route('login') }}" class="signup">Sign In</a></p>
             </label>
             
         </form>
