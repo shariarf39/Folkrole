@@ -1,40 +1,3 @@
-let slideIndex = 0;
-const slides = document.querySelector('.slides');
-const dots = document.querySelectorAll('.dot');
-const prevButton = document.querySelector('.prev');
-const nextButton = document.querySelector('.next');
-
-function showSlide(index) {
-    const totalSlides = slides.children.length;
-
-    if (index < 0) slideIndex = totalSlides - 1;
-    else if (index >= totalSlides) slideIndex = 0;
-    else slideIndex = index;
-
-    slides.style.transform = `translateX(-${slideIndex * 100}%)`;
-
-    dots.forEach(dot => dot.classList.remove('active'));
-    dots[slideIndex]?.classList.add('active');
-}
-
-dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => showSlide(index));
-});
-
-function changeSlide(direction) {
-    showSlide(slideIndex + direction);
-}
-
-prevButton.addEventListener('click', () => changeSlide(-1));
-nextButton.addEventListener('click', () => changeSlide(1));
-setInterval(() => changeSlide(1), 3000);
-
-
-
-
-
-
-
 
 // navbar
 
@@ -43,11 +6,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.getElementById('nav-links');
 
     menuToggle.addEventListener('click', () => {
+        // Toggle the visibility of the navigation links
         navLinks.classList.toggle('show');
         document.body.classList.toggle('nav-open');
-        menuToggle.innerHTML = navLinks.classList.contains('show')
-            ? '<i class="fa-solid fa-x"></i>' 
-            : '<i class="fa-solid fa-bars"></i>';
+
+        // Check if the nav-links has the "show" class to determine the icon
+        if (navLinks.classList.contains('show')) {
+            menuToggle.innerHTML = '<i class="fa-solid fa-x"></i>'; // Close icon
+        } else {
+            menuToggle.innerHTML = '<i class="fa-solid fa-bars menu-toggle" id="menu-toggle"></i>'; // Bars icon
+        }
     });
 });
 
@@ -136,3 +104,4 @@ function changeGallerySlide(dir) {
 
     showGallerySlide(galleryIndex);
 }
+

@@ -6,18 +6,18 @@
     <div class="slider home" id="home">
         <div class="slides">
             <div class="slide">
-                <div class="content">
-                    <span class="tag">Latest Project</span>
-                    <h2>Community Development</h2>
-                    <p>Build a world where all youth are safe, strong, and valued.</p>
-                    <a href="#" class="btn">Read More</a>
-                </div>
-                <img src="img/home_slide1.jpg" alt="Community Development">
+            <div class="content">
+            <p id="welcome-text"></p><br>
+            <h2 id="community-heading"></h2>
+            <p>Build a world where all youth are safe, strong, and valued.</p>
+            <a href="#" class="btn">Read More</a>
             </div>
+            <img src="img/home_slide1.jpg" alt="Community Development">
+            </div>
+
             <div class="slide">
                 <div class="content">
-                    <span class="tag">Latest Project</span>
-                    <h2>Empower Rural Youth</h2>
+                    <h2 id="Empower-heading"></h2>
                     <p>Enabling sustainable development for rural communities.</p>
                     <a href="#" class="btn">Read More</a>
                 </div>
@@ -25,8 +25,7 @@
             </div>
             <div class="slide">
                 <div class="content">
-                    <span class="tag">Latest Project</span>
-                    <h2>Education for All</h2>
+                    <h2 id="Education-heading"></h2>
                     <p>Promoting equal opportunities for education worldwide.</p>
                     <a href="#" class="btn">Read More</a>
                 </div>
@@ -43,3 +42,7 @@
         <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
         <button class="next" onclick="changeSlide(1)">&#10095;</button>
     </div>
+
+
+
+    <script src="style/autotext.js"></script>
