@@ -18,11 +18,8 @@
                 <div class="gallery_slide"><img src="img/gallery_slider2.jpg" alt="Image 2"></div>
                 <div class="gallery_slide"><img src="img/gallery_slider7.jpg" alt="Image 7"></div>
 
-
-
+                <script src="style/gellery.js"></script>
             </div>
-            <!-- <button class="previi">&#10094;</button>
-            <button class="nextii">&#10095;</button> -->
         </div>
     </div>
 

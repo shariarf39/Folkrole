@@ -55,7 +55,7 @@
                     esse.</p>
             </div>
             <div class="service_box">
-                <i class="fa-solid fa-church" style="color: blue;font-size: 2rem;padding: 1rem 0;"></i>
+                <i class="fa-solid fa-satellite-dish" style="color: blue;font-size: 2rem;padding: 1rem 0;"></i>
                 <p class="heading_service">Community</p>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit minima incidunt nemo accusamus officia
                     odio dicta blanditiis autem, sunt doloribus in ipsum aut maxime cupiditate cum aperiam numquam vel

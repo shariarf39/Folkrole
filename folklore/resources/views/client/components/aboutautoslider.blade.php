@@ -17,11 +17,7 @@
             <div class="auto_slide"><img src="img/about_slider3.jpg" alt="Image 3"></div>
             <div class="auto_slide"><img src="img/about_slider2.jpg" alt="Image 2"></div>
 
-
-
         </div>
-        <!-- <button class="previi">&#10094;</button>
-        <button class="nextii">&#10095;</button> -->
     </div>
 
 
