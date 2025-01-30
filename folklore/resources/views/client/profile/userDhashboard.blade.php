@@ -18,7 +18,7 @@
         }
         .sidebar {
             width: 250px;
-            height: 100vh;
+            height: 100vh; /* Full viewport height */
             background: #343a40;
             color: white;
             padding-top: 20px;
@@ -28,7 +28,21 @@
             transition: all 0.3s ease-in-out;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
             z-index: 1000;
+            overflow-y: auto; /* Enable vertical scrolling */
+            scrollbar-width: thin; /* Firefox scrollbar */
+            scrollbar-color: #495057 transparent;
         }
+
+        /* Custom scrollbar for WebKit browsers */
+        .sidebar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: #495057;
+            border-radius: 3px;
+        }
+
         .sidebar a {
             color: white;
             text-decoration: none;
@@ -96,25 +110,27 @@
         <i class="fas fa-bars"></i>
     </button>
 
+    @if (session('status'))
+    <script>alert('{{ session('status') }}')</script>
+    @endif
+
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <h4 class="text-center mt-3">Dashboard</h4>
         <a href="{{ route('dashboard') }}" class="nav-link" data-url="{{ route('dashboard') }}"><i class="fas fa-home"></i> Dashboard</a>
         <a href="{{ route('profile')}}" class="nav-link" data-url="{{ route('profile')}}"><i class="fas fa-user"></i> Profile</a>
-        <a href="" class="nav-link" data-url=""><i class="fas fa-cog"></i> Join Class</a>
-        <a href="" class="nav-link" data-url=""><i class="fas fa-cog"></i> Submit Assignment</a>
-        <a href="" class="nav-link" data-url=""><i class="fas fa-cog"></i> My Book</a>
-        <a href="" class="nav-link" data-url=""><i class="fas fa-cog"></i> My Course</a>
+        <a href="#" class="nav-link" data-url="#"><i class="fas fa-cog"></i> Join Class</a>
+        <a href="#" class="nav-link" data-url="#"><i class="fas fa-cog"></i> Submit Assignment</a>
+        <a href="#" class="nav-link" data-url="#"><i class="fas fa-cog"></i> My Book</a>
+        <a href="#" class="nav-link" data-url="#"><i class="fas fa-cog"></i> My Course</a>
+        <a href="{{ route('changePassword')}}" class="nav-link" data-url="{{ route('changePassword')}}"><i class="fas fa-cog"></i> Change Password</a>
         <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-    <i class="fas fa-sign-out-alt"></i> Logout
-</a>
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
 
-<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-    @csrf
-</form>
-
-</a>
-
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
     </div>
 
     <!-- Content Area -->
@@ -136,48 +152,49 @@
 
         // AJAX Page Load
         $(document).ready(function() {
-    var defaultUrl = "{{ route('dashboard') }}"; // Set default route
-    $("#page-content").html('<div class="text-center mt-5"><i class="fas fa-spinner fa-spin fa-3x"></i></div>');
+            var defaultUrl = "{{ route('dashboard') }}"; // Set default route
+            $("#page-content").html('<div class="text-center mt-5"><i class="fas fa-spinner fa-spin fa-3x"></i></div>');
 
-    // Load default dashboard page
-    $.ajax({
-        url: defaultUrl,
-        type: "GET",
-        success: function(response) {
-            $("#page-content").html(response);
-        },
-        error: function() {
-            $("#page-content").html("<p class='text-danger text-center'>Error loading page.</p>");
-        }
-    });
+            // Load default dashboard page
+            $.ajax({
+                url: defaultUrl,
+                type: "GET",
+                success: function(response) {
+                    $("#page-content").html(response);
+                },
+                error: function() {
+                    $("#page-content").html("<p class='text-danger text-center'>Error loading page.</p>");
+                }
+            });
 
-    // Handle navigation clicks
-    $(".nav-link").click(function(e) {
-        e.preventDefault();
-        var url = $(this).data("url");
+            // Handle navigation clicks
+            $(".nav-link").click(function(e) {
+                e.preventDefault();
+                var url = $(this).data("url");
 
-        // Show loading spinner while content is being fetched
-        $("#page-content").html('<div class="text-center mt-5"><i class="fas fa-spinner fa-spin fa-3x"></i></div>');
+                if (url) {
+                    // Show loading spinner while content is being fetched
+                    $("#page-content").html('<div class="text-center mt-5"><i class="fas fa-spinner fa-spin fa-3x"></i></div>');
 
-        // Load new page content
-        $.ajax({
-            url: url,
-            type: "GET",
-            success: function(response) {
-                $("#page-content").html(response);
-            },
-            error: function() {
-                $("#page-content").html("<p class='text-danger text-center'>Error loading page.</p>");
-            }
+                    // Load new page content
+                    $.ajax({
+                        url: url,
+                        type: "GET",
+                        success: function(response) {
+                            $("#page-content").html(response);
+                        },
+                        error: function() {
+                            $("#page-content").html("<p class='text-danger text-center'>Error loading page.</p>");
+                        }
+                    });
+
+                    // Close sidebar on small screens after navigation
+                    if ($(window).width() <= 992) {
+                        toggleSidebar();
+                    }
+                }
+            });
         });
-
-        // Close sidebar on small screens after navigation
-        if ($(window).width() <= 992) {
-            toggleSidebar(); // Close the sidebar on small screens
-        }
-    });
-});
-
     </script>
 
 </body>

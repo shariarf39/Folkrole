@@ -34,6 +34,9 @@ Route::controller(ProfileController::class)->group(function(){
         Route::get('/profile', 'profile')->name('profile');
         Route::put('/updateProfile', 'updateProfile')->name('updateProfile');
         Route::post('/logout', 'logout')->name('logout');
+
+        Route::get('changePassword',  'showChangePasswordForm')->name('changePassword');
+        Route::post('update-password', 'updatePassword')->name('updatePassword');
     });
 
 
