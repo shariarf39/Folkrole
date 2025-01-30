@@ -101,7 +101,10 @@
         <h4 class="text-center mt-3">Dashboard</h4>
         <a href="{{ route('dashboard') }}" class="nav-link" data-url="{{ route('dashboard') }}"><i class="fas fa-home"></i> Dashboard</a>
         <a href="{{ route('profile')}}" class="nav-link" data-url="{{ route('profile')}}"><i class="fas fa-user"></i> Profile</a>
-        <a href="" class="nav-link" data-url=""><i class="fas fa-cog"></i> Settings</a>
+        <a href="" class="nav-link" data-url=""><i class="fas fa-cog"></i> Join Class</a>
+        <a href="" class="nav-link" data-url=""><i class="fas fa-cog"></i> Submit Assignment</a>
+        <a href="" class="nav-link" data-url=""><i class="fas fa-cog"></i> My Book</a>
+        <a href="" class="nav-link" data-url=""><i class="fas fa-cog"></i> My Course</a>
         <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
     <i class="fas fa-sign-out-alt"></i> Logout
 </a>
