@@ -10,15 +10,26 @@
             background-color: #f4f7fa;
             font-family: 'Arial', sans-serif;
         }
+        .container{
+            padding: 2rem 0;
+        }
+
+        .container h1{
+            font-size: 1.7rem;
+            font-weight: 700;
+            text-align: center;
+        }
 
         .profile-container {
-            max-width: 700px;
-            margin: 40px auto;
-            padding: 40px;
+            width: 70%;
+            margin: 15px auto;
+            padding: 1.5rem 2rem;
             border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             background-color: #ffffff;
-            border: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .profile-container h1 {
@@ -41,34 +52,109 @@
 
         .profile-info {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+            flex-direction: column;
+            justify-content:center;
+            align-items: center;
+            width: 80%;
+            height: auto;
         }
 
-        .profile-info div {
-            width: 48%;
-            margin-bottom: 20px;
+        .profile_details{
+            padding: 6rem 2rem 2rem 2rem;
+            width: 100%;
+            box-shadow: 0 0 10px blue;
+            border: 1px solid blue;
+            border-radius: 7px;
+            margin-top: -10%;
         }
+
+        .profile-info .indentity {
+            width: 100%;
+            padding-top: .5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            background-color: white;
+        }
+
+        .profile-info .img_profile{
+            width: 100%;
+            height: auto;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .profile-info .img_profile img{
+            width: 20%;
+            border-radius: 50%;
+            border: 2px solid blue;
+            padding: .1rem;
+            background-color: white;
+        }
+
+         @media (max-width: 600px) {
+            .profile-info{
+                width: 100%;
+            }
+            .profile-container {
+            width: 100%;
+            padding: 0;
+            }
+            .profile-info .indentity {
+                width: 100%;
+            }
+
+         }
 
         @media (max-width: 768px) {
-            .profile-info div {
+            .profile-container {
+            width: 100%;
+        }
+            .profile-info .indentity {
                 width: 100%;
             }
         }
 
-        .profile-container .btn {
-            background-color: #2980b9;
+        .profile-container .btn,
+        .btn-primary {
+            background-color: blue;
             color: white;
             border: none;
-            padding: 12px 25px;
-            border-radius: 5px;
+            padding: .7rem 2rem;
+            border-radius: 2rem;
             font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin: 0 auto;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.5s ease;
         }
 
-        .profile-container .btn:hover {
-            background-color: #1f6f99;
+        .profile-container .btn:hover,
+        .btn-primary:hover {
+            background-color: black;
+        }
+
+        .btn-primary {
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: .5rem 1rem;
+            border-radius: 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin: 0 auto;
+            cursor: pointer;
+            transition: background-color 0.5s ease;
+        }
+
+
+        .btn-primary:hover {
+            background-color: black;
         }
 
     </style>
@@ -86,24 +172,32 @@
 @endif
 
         <div class="profile-info">
-            <div>
-                <p><strong>Name:</strong> {{ $user->name }}</p>
+            <div class="img_profile">
+                <img src="img/user.png" alt="Picture">
             </div>
-            <div>
-                <p><strong>Email:</strong> {{ $user->email }}</p>
+            <div class="profile_details">
+                <div class="indentity">
+                <p><strong><i class="fa-solid fa-user"></i>&nbsp;&nbsp;Name:</strong> {{ $user->name }}</p>
             </div>
-            <div>
-                <p><strong>Phone:</strong> {{ $user->phone ?? 'Not Provided' }}</p>
+            <div class="indentity">
+                <p><strong><i class="fa-solid fa-phone"></i>&nbsp;&nbsp;Phone:</strong> {{ $user->phone ?? 'Not Provided' }}</p>
             </div>
-            <div>
-                <p><strong>Address:</strong> {{ $user->address ?? 'Not Provided' }}</p>
+            <div class="indentity">
+                <p><strong><i class="fa-solid fa-envelope"></i>&nbsp;&nbsp;Email:</strong> {{ $user->email }}</p>
             </div>
-        </div>
+            <div class="indentity">
+                <p><strong><i class="fa-solid fa-location-dot"></i>&nbsp;&nbsp;Address:</strong> {{ $user->address ?? 'Not Provided' }}</p>
+            </div>
 
         <div class="text-center">
             <!-- Trigger Edit Profile Modal -->
             <button class="btn" data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit Profile</button>
         </div>
+
+            </div>
+
+        </div>
+
     </div>
 </div>
 

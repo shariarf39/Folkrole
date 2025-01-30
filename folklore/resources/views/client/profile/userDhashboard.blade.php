@@ -111,19 +111,27 @@
     </button>
 
     @if (session('status'))
-    <script>alert('{{ session('status') }}')</script>
+        <script>alert("{{ session('status') }}")</script>
     @endif
 
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <h4 class="text-center mt-3">Dashboard</h4>
-        <a href="{{ route('dashboard') }}" class="nav-link" data-url="{{ route('dashboard') }}"><i class="fas fa-home"></i> Dashboard</a>
+        <!-- <a href="{{ route('home') }}" class="nav-link" data-url="{{route('home')}}"><i class="fa-solid fa-home"></i> Homepage</a> -->
+        <a href="{{ route('dashboard') }}" class="nav-link" data-url="{{ route('dashboard') }}"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+
         <a href="{{ route('profile')}}" class="nav-link" data-url="{{ route('profile')}}"><i class="fas fa-user"></i> Profile</a>
-        <a href="#" class="nav-link" data-url="#"><i class="fas fa-cog"></i> Join Class</a>
-        <a href="#" class="nav-link" data-url="#"><i class="fas fa-cog"></i> Submit Assignment</a>
-        <a href="#" class="nav-link" data-url="#"><i class="fas fa-cog"></i> My Book</a>
-        <a href="#" class="nav-link" data-url="#"><i class="fas fa-cog"></i> My Course</a>
-        <a href="{{ route('changePassword')}}" class="nav-link" data-url="{{ route('changePassword')}}"><i class="fas fa-cog"></i> Change Password</a>
+
+        <a href="#" class="nav-link" data-url="#"><i class="fa-solid fa-school"></i> Join Class</a>
+
+        <a href="#" class="nav-link" data-url="#"><i class="fa-solid fa-house-laptop"></i></i> Submit Assignment</a>
+
+        <a href="#" class="nav-link" data-url="#"><i class="fa-solid fa-book"></i> My Book</a>
+
+        <a href="#" class="nav-link" data-url="#"><i class="fa-brands fa-discourse"></i> My Course</a>
+
+        <a href="{{ route('changePassword')}}" class="nav-link" data-url="{{ route('changePassword')}}"><i class="fa-solid fa-lock"></i> Change Password</a>
+        
         <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             <i class="fas fa-sign-out-alt"></i> Logout
         </a>

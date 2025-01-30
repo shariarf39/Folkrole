@@ -23,14 +23,14 @@
     
     @if (session('status'))
         <script>
-            alert('{{ session('status') }}');
+            alert("{{ session('status') }}");
         
         </script>
     @endif
 
     @if (session('error'))
         <script>
-            alert('{{ session('error') }}');
+            alert("{{ session('error') }}");
         </script>
     @endif
 
