@@ -156,4 +156,5 @@
 </body>
 
 <script src="style/style.js"></script>
+<script src="{{asset('style/style.js')}}"></script>
     </html>
