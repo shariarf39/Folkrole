@@ -70,21 +70,22 @@
         .profile-container .btn:hover {
             background-color: #1f6f99;
         }
-
     </style>
 </head>
 <body>
 
 <div class="container">
+<h1>User Dashboard</h1>
     <div class="profile-container">
-        <h1>User Profile</h1>
-        @if(session('success_updateProfile'))
+    @if(session('success_updateProfile'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         {{ session('success_updateProfile') }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 @endif
 
+
+        
         <div class="profile-info">
             <div>
                 <p><strong>Name:</strong> {{ $user->name }}</p>
@@ -100,51 +101,6 @@
             </div>
         </div>
 
-        <div class="text-center">
-            <!-- Trigger Edit Profile Modal -->
-            <button class="btn" data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit Profile</button>
-        </div>
-    </div>
-</div>
-
-<!-- Modal for Edit Profile -->
-<div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editProfileModalLabel">Edit Profile</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form method="POST" action="{{ route('updateProfile') }}">
-                    @csrf
-                    @method('PUT')
-
-                    <!-- Input Fields for Profile Edit -->
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $user->name) }}" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" value="{{ old('email', $user->email) }}" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="phone" class="form-label">Phone</label>
-                        <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone', $user->phone ?? '') }}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="address" class="form-label">Address</label>
-                        <input type="text" class="form-control" id="address" name="address" value="{{ old('address', $user->address ?? '') }}">
-                    </div>
-
-                    <!-- Submit Button -->
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Save Changes</button>
-                    </div>
-                </form>
-            </div>
-        </div>
     </div>
 </div>
 

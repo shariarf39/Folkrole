@@ -99,7 +99,7 @@ class UserController extends Controller
 
         // Attempt to log in the user
         if (Auth::attempt($request->only('email', 'password'))) {
-            return redirect()->route('profile')->with('successLogin', 'Logged in successfully!');
+            return redirect()->route('userDhashboard')->with('successLogin', 'Logged in successfully!');
         }
 
         return back()->withErrors([
@@ -108,9 +108,5 @@ class UserController extends Controller
     }
 
     // Handle logout
-    public function logout()
-    {
-        Auth::logout();
-        return redirect()->route('userLogin')->with('successLogout', 'Logged out successfully!');
-    }
+  
 }

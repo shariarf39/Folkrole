@@ -21,7 +21,7 @@ Route::controller(UserController::class)->group(function(){
     //Backend
     Route::post('/userRegister', 'userRegister')->name('userRegister');
     Route::post('/userLogin',  'userLogin')->name('userLogin');
-    Route::post('/logout', 'logout')->name('logout');
+  
     //Profile
 
 });
@@ -29,7 +29,11 @@ Route::controller(UserController::class)->group(function(){
 Route::controller(ProfileController::class)->group(function(){
     
     Route::middleware(['auth'])->group(function () {
-        Route::get('/profile',  'profile')->name('profile');
+        Route::get('/userDhashboard',  'userDhashboard')->name('userDhashboard');
+        Route::get('/dashboard', 'dashboard')->name('dashboard');
+        Route::get('/profile', 'profile')->name('profile');
+        Route::put('/updateProfile', 'updateProfile')->name('updateProfile');
+        Route::post('/logout', 'logout')->name('logout');
     });
 
 
