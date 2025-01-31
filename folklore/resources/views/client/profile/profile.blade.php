@@ -91,7 +91,6 @@
             width: 20%;
             border-radius: 50%;
             border: 2px solid blue;
-            padding: .1rem;
             background-color: white;
         }
 
