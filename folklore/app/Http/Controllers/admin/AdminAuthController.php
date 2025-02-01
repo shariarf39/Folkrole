@@ -6,18 +6,20 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Admin;
+use App\Models\Course;
+
 use Illuminate\Support\Facades\Hash;
 
 class AdminAuthController extends Controller
 {
     function adminLogin()
     {
-        return view('admin/pages/adminLogin');
+        return view('server/pages/adminLogin');
     }
     public function adminDashboard()
     {
         
-        return view('admin/adminDashboard');
+        return view('dashboard');
     }
 
     public function adminmenu()
@@ -26,11 +28,18 @@ class AdminAuthController extends Controller
        
         return view('admin/component/dashboard');
     }
+    public function adminCourse()
+    {
+        
+        $courses = Course::all();
+        return view('server/pages/course', compact('courses'));
+       
+    }
     public function admin()
     {
         
         $admins = Admin::all();
-        return view('admin/pages/admin', compact('admins'));
+        return view('server/pages/admin', compact('admins'));
     }
 
     public function plogin(Request $request)
@@ -102,5 +111,77 @@ class AdminAuthController extends Controller
    
 }
 
-     
+public function storeCourse(Request $request)
+{
+
+
+    $cr = new Course;
+    $cr->title = $request->title;
+    $cr->short_description = $request->short_description;
+    $cr->description = $request->description;
+    $cr->regular_price = $request->regular_price;
+    $cr->offer_price = $request->offer_price;
+  
+
+    if ($request->hasFile('picture')) {
+        $file = $request->file('picture');
+        $filename = uniqid() . '_' . $cr->cr_name;
+        $file->move('uploads/images/courses', $filename);
+        $cr->picture = $filename;
+    }
+
+    $result = $cr->save();
+
+    
+    if ($result) {
+        return redirect()->route('adminCourse')->with('sucess', 'Admin added successfully.');
+    } else {
+        return redirect()->route('adminCourse')->with('error', 'Somethinf went wrong, please try again.');
+    }
+    
+
 }
+
+public function deleteCourse(Request $request)
+{
+    $course = Course::find($request->id);
+
+    if (!$course) {
+        return redirect()->back()->with('error', 'Course not found.');
+    }
+
+    // Delete the course image if it exists
+    if ($course->picture) {
+        $imagePath = public_path('uploads/images/courses/' . $course->picture);
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
+        }
+    }
+
+    // Delete the course from database
+    $course->delete();
+
+    return redirect()->route('adminCourse')->with('success', 'Course deleted successfully.');
+}
+
+public function coursechangeStatus(Request $request)
+{
+    $admin = Course::find($request->id);
+    $admin->is_active = $request->status;
+    $admin->save();
+
+    return redirect()->back()->with('success', 'Course status updated successfully.');
+}
+
+
+
+
+
+   
+}
+
+
+
+
+     
+

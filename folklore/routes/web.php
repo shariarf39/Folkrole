@@ -62,7 +62,12 @@ Route::controller(ProfileController::class)->group(function(){
         Route::post('/adminchangeStatus', 'adminchangeStatus')->name('adminchangeStatus')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
         Route::post('/addAdmin', 'addAdmin')->name('addAdmin')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
         Route::post('/delete-admin', 'deleteAdmin')->name('admin.delete')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
-    
+
+
+        Route::get('/adminCourse', 'adminCourse')->name('adminCourse')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
+        Route::post('/storeCourse', 'storeCourse')->name('storeCourse')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
+        Route::post('/deleteCourse', 'deleteCourse')->name('deleteCourse')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
+        Route::post('/coursechangeStatus', 'coursechangeStatus')->name('coursechangeStatus')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
 
 
 

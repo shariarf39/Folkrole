@@ -118,9 +118,9 @@
         <h4 class="text-center mt-3">Dashboard</h4>
         <a href="{{ route('adminmenu') }}" class="nav-link" data-url="{{ route('adminmenu') }}"><i class="fas fa-home"></i> Dashboard</a>
         <a href="{{ route('admin')}}" class="nav-link" data-url="{{ route('admin')}}"><i class="fas fa-user"></i> Admin</a>
-        <a href="{{route('joinclass')}}" class="nav-link" data-url="{{route('joinclass')}}"><i class="fas fa-cog"></i> Join Class</a>
-        <a href="{{route('assignment')}}" class="nav-link" data-url="{{route('assignment')}}"><i class="fas fa-cog"></i> Submit Assignment</a>
-        <a href="{{route('book')}}" class="nav-link" data-url="{{route('book')}}"><i class="fas fa-book"></i> My Book</a>
+        <a href="{{route('joinclass')}}" class="nav-link" data-url="{{route('joinclass')}}"><i class="fas fa-cog"></i> Live Class</a>
+        <a href="{{route('adminCourse')}}" class="nav-link" data-url="{{route('adminCourse')}}"><i class="fas fa-cog"></i> Course</a>
+        <a href="{{route('book')}}" class="nav-link" data-url="{{route('book')}}"><i class="fas fa-book"></i>Book</a>
         <a href="{{route('courseplan')}}" class="nav-link" data-url="{{route('courseplan')}}"><i class="fas fa-graduation-cap"></i> My Course</a>
         <a href="{{ route('changePassword')}}" class="nav-link" data-url="{{ route('changePassword')}}"><i class="fas fa-lock"></i> Change Password</a>
         <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -145,6 +145,30 @@
             sidebar.classList.toggle("active");
             content.classList.toggle("active");
         }
+        $(document).on("submit", "form", function(e) {
+    e.preventDefault();
+    
+    var form = $(this);
+    var url = form.attr("action");
+    
+    // Check if the form contains file input
+    var formData = new FormData(this); 
+
+    $.ajax({
+        url: url,
+        type: "POST",
+        data: formData,
+        processData: false,  // Prevent jQuery from processing data
+        contentType: false,  // Prevent jQuery from setting content type
+        success: function(response) {
+            $("#page-content").html(response);
+        },
+        error: function(xhr) {
+            $("#page-content").html("<p class='text-danger text-center'>Error processing request.</p>");
+        }
+    });
+});
+
 
         $(document).ready(function() {
             function loadPage(url) {

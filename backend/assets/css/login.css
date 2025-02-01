@@ -1,0 +1,49 @@
+
+
+body{
+    position: relative;
+}
+.login-box{
+    width: 40%;
+    height: 500px;
+    position: absolute;
+
+
+    left: 0;
+    right: 0;
+
+    margin: auto;
+    margin-top: 80px;
+}
+
+.copyright {
+    position: absolute;
+    top: 600px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+@media only screen and (min-width:240px) and (max-width: 710px) {
+    .login-box{
+        width: 90%;
+        height: 500px;
+        position: absolute;
+    
+    
+        left: 0;
+        right: 0;
+    
+        margin: auto;
+        margin-top: 100px;
+    }
+
+    .copyright {
+        position: absolute;
+        top: 700px;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+    
+}
