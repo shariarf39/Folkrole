@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\AdminAuthController;
 
 Route::controller(UserController::class)->group(function(){
     Route::get('/', 'homePage')->name('home');
@@ -46,6 +47,33 @@ Route::controller(ProfileController::class)->group(function(){
         Route::get('/courseplan', 'courseplan')->name('courseplan');
 
     });
+
+  
+
+
+    Route::controller(AdminAuthController::class)->group(function () {
+        Route::get('adminLogin', 'adminLogin')->name('adminlogin');
+        Route::post('plogin', 'plogin')->name('plogin');
+        Route::post('adminlogout', 'adminlogout')->name('adminlogout');
+        Route::get('/adminDashboard', 'adminDashboard')->name('adminDashboard')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
+        Route::get('/adminmenu', 'adminmenu')->name('adminmenu')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
+
+        Route::get('/admin', 'admin')->name('admin')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
+        Route::post('/adminchangeStatus', 'adminchangeStatus')->name('adminchangeStatus')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
+        Route::post('/addAdmin', 'addAdmin')->name('addAdmin')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
+        Route::post('/delete-admin', 'deleteAdmin')->name('admin.delete')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
+    
+
+
+
+
+        
+    });
+    
+
+   
+
+
 
 
 });
