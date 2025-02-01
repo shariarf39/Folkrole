@@ -19,7 +19,7 @@
         .sidebar {
             width: 250px;
             height: 100vh;
-            background: #343a40;
+            background: black;
             color: white;
             padding-top: 20px;
             position: fixed;
@@ -44,17 +44,22 @@
             text-decoration: none;
             display: flex;
             align-items: center;
-            padding: 12px 20px;
+            padding: 10px 20px;
             font-size: 16px;
-            transition: all 0.3s ease;
+            transition: .5s ease background, .2s ease color;
+            border: none;
+            border-right: 1px solid transparent;
+            border-left: 1px solid transparent;
             cursor: pointer;
         }
         .sidebar a i {
             margin-right: 10px;
         }
         .sidebar a:hover {
-            background: #495057;
-            padding-left: 25px;
+            background: white;
+            color: black;
+            border-right: 1px solid red;
+            border-left: 1px solid red;
         }
         .sidebar h4 {
             text-align: center;
@@ -89,13 +94,15 @@
             left: 15px;
             font-size: 24px;
             cursor: pointer;
-            color: #343a40;
-            background: transparent;
-            border: none;
+            color: black;
+            background: white;
+            border: black 1px solid;
             z-index: 1001;
         }
         .toggle-btn:focus {
             outline: none;
+            color: white;
+            background: black;
         }
     </style>
 </head>
@@ -106,17 +113,17 @@
     </button>
 
     @if (session('status'))
-    <script>alert('{{ session('status') }}')</script>
+    <script>alert("{{ session('status') }}")</script>
     @endif
 
     <div class="sidebar" id="sidebar">
         <h4 class="text-center mt-3">Dashboard</h4>
         <a href="{{ route('dashboard') }}" class="nav-link" data-url="{{ route('dashboard') }}"><i class="fas fa-home"></i> Dashboard</a>
         <a href="{{ route('profile')}}" class="nav-link" data-url="{{ route('profile')}}"><i class="fas fa-user"></i> Profile</a>
-        <a href="#" class="nav-link" data-url="#"><i class="fas fa-cog"></i> Join Class</a>
-        <a href="#" class="nav-link" data-url="#"><i class="fas fa-cog"></i> Submit Assignment</a>
-        <a href="#" class="nav-link" data-url="#"><i class="fas fa-book"></i> My Book</a>
-        <a href="#" class="nav-link" data-url="#"><i class="fas fa-graduation-cap"></i> My Course</a>
+        <a href="{{route('joinclass')}}" class="nav-link" data-url="{{route('joinclass')}}"><i class="fas fa-cog"></i> Join Class</a>
+        <a href="{{route('assignment')}}" class="nav-link" data-url="{{route('assignment')}}"><i class="fas fa-cog"></i> Submit Assignment</a>
+        <a href="{{route('book')}}" class="nav-link" data-url="{{route('book')}}"><i class="fas fa-book"></i> My Book</a>
+        <a href="{{route('courseplan')}}" class="nav-link" data-url="{{route('courseplan')}}"><i class="fas fa-graduation-cap"></i> My Course</a>
         <a href="{{ route('changePassword')}}" class="nav-link" data-url="{{ route('changePassword')}}"><i class="fas fa-lock"></i> Change Password</a>
         <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             <i class="fas fa-sign-out-alt"></i> Logout

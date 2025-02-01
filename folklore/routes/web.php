@@ -22,6 +22,8 @@ Route::controller(UserController::class)->group(function(){
     Route::post('/userRegister', 'userRegister')->name('userRegister');
     Route::post('/userLogin',  'userLogin')->name('userLogin');
   
+
+
     //Profile
 
 });
@@ -34,9 +36,15 @@ Route::controller(ProfileController::class)->group(function(){
         Route::get('/profile', 'profile')->name('profile');
         Route::put('/updateProfile', 'updateProfile')->name('updateProfile');
         Route::post('/logout', 'logout')->name('logout');
-
         Route::get('changePassword',  'showChangePasswordForm')->name('changePassword');
         Route::post('update-password', 'updatePassword')->name('updatePassword');
+
+
+        Route::get('/joinclass', 'joinclass')->name('joinclass');
+        Route::get('/assignment', 'assignment')->name('assignment');
+        Route::get('/book', 'book')->name('book');
+        Route::get('/courseplan', 'courseplan')->name('courseplan');
+
     });
 
 

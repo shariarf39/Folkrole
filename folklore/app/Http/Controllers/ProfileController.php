@@ -21,6 +21,39 @@ class ProfileController extends Controller
        
         return view('client/profile/userDhashboard');
     }
+
+    public function joinclass()
+    {
+       
+        return view('client/profile/joinclass');
+    }
+
+    public function assignment()
+    {
+       
+        return view('client/profile/assignment');
+    }
+
+    public function book()
+    {
+       
+        return view('client/profile/book');
+    }
+
+    public function courseplan()
+    {
+       
+        return view('client/profile/courseplan');
+    }
+
+
+
+
+
+
+
+
+
     public function showChangePasswordForm()
     {
        

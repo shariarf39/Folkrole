@@ -766,9 +766,23 @@ button.nextii:hover {
     overflow: hidden;
     background: black;
     padding: 5rem 0;
+    z-index: 1;
+    background-size: 100% 100%;
+    /* Added this line */
+}
+
+#bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
 }
 
 .gallery_sec {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -822,8 +836,6 @@ button.nextii:hover {
     right: 10px;
 }
 
-
-
 @media (max-width: 1200px) {
     .gallery_slide {
         flex: 0 0 33.33%;
@@ -856,6 +868,7 @@ button.nextii:hover {
         height: auto;
     }
 }
+
 
 
 /* news&Events Section */
@@ -1317,7 +1330,17 @@ button.nextii:hover {
     }
 }
 
+@media (max-width: 600px) {
+    .social_sec {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
+    .social {
+        padding: 2rem 1rem;
+    }
+}
 
 
 

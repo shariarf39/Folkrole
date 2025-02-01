@@ -14,6 +14,15 @@
         .password-field .input-group-text {
             cursor: pointer;
         }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        form input[type="password"] {
+            outline: none;
+        }
     </style>
 </head>
 <body>
