@@ -68,7 +68,7 @@
     <script>
         setTimeout(function() {
             location.reload(); // This will refresh the page after 3 seconds
-        }, 3000); // 3000ms = 3 seconds
+        }, 1000); // 3000ms = 3 seconds
     </script>
 @endif
 
