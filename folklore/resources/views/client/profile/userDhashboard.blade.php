@@ -112,9 +112,7 @@
         <i class="fas fa-bars"></i>
     </button>
 
-    @if (session('status'))
-    <script>alert("{{ session('status') }}")</script>
-    @endif
+ 
 
     <div class="sidebar" id="sidebar">
         <h4 class="text-center mt-3">Dashboard</h4>

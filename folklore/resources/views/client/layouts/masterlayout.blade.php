@@ -36,8 +36,29 @@
                 <li><a href="{{route('Publications')}}">Publications</a></li>
                 <li><a href="{{route('contactus')}}">Contact Us</a></li>
                 <li><a href="{{route('donate')}}">Donate</a></li>
-                <li><a href="{{route('login')}}" class="join-btn login">Login</a></li>
-                <li><a href="{{route('userregistration')}}" class="join-btn registration">Registration</a></li>
+
+                @if(Auth::check())
+               <li>
+                   <a href="{{ route('userDhashboard') }}">
+                       <i class="fas fa-user"></i> {{ Auth::user()->name }}
+                   </a>
+               </li>
+               <li>
+                   <form action="{{ route('logout') }}" method="POST">
+                       @csrf
+                       <button class="join-btn login" type="submit">Logout</button>
+                      </form>
+               </li>
+                @else
+                    <!-- Show Sign In/Sign Up -->              
+                    <li><a href="{{route('login')}}" class="join-btn login">Login</a></li>
+                    <li><a href="{{route('userregistration')}}" class="join-btn registration">Registration</a></li>
+                @endif
+
+
+
+               
+               
             </ul>
         </nav>
         <button id="menu-toggle" class="menu-toggle" aria-label="Toggle navigation">

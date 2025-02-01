@@ -78,7 +78,7 @@ class ProfileController extends Controller
             $user = auth()->user();
             $user->update($request->only(['name', 'email', 'phone', 'address']));
     
-            return redirect()->route('userDashboard')->with('success_updateProfile', 'Profile updated successfully!');
+            return redirect()->route('profile')->with('success_updateProfile', 'Profile updated successfully!');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Something went wrong. Please try again.');
         }

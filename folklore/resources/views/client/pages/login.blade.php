@@ -12,15 +12,37 @@
         text-align: center; /* Centers the text inside the box */
         max-width: 400px; /* Optional: To limit the width of the alert box */
     }
+
+    .error-box {
+        background: #ffebee;
+        border-left: 5px solid #d32f2f;
+        color: #d32f2f;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;    
+        font-weight: bold;
+    }
+    .error-box ul {
+        margin: 5px 0 0;
+        padding-left: 20px;
+    }
+    .error-box li {
+       list-style: disc;
+    }
+    
+    .fade-out {
+        opacity: 0;
+        transition: opacity 1s ease-out;
+    }
 </style>
 
 
 
-@if(session('success'))
+    @if(session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
     </div>
-@endif
+    @endif
 
 
     <link rel="stylesheet" href="{{ asset('style/login.css') }}">
@@ -33,10 +55,16 @@
 
 
         @if ($errors->any())
-            <div class="alert alert-danger">
-                {{ $errors->first() }}
-            </div>
+           <div class="error-box">
+               <strong>⚠ Please fix the following errors:</strong>
+               <ul>
+                   @foreach ($errors->all() as $error)
+                       <li>{{ $error }}</li>
+                   @endforeach
+               </ul>
+           </div>
         @endif
+
 
         @if(session('successLogin'))
             <div class="alert alert-success">
@@ -68,6 +96,13 @@
     </div>
 
     <script src="{{ asset('style/login.js') }}"></script>
+
+    <script>
+        setTimeout(() => {
+            document.querySelector('.error-box')?.classList.add('fade-out');
+        }, 5000);
+
+    </script>
 
 
 @endsection

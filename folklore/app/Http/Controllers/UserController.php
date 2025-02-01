@@ -70,9 +70,12 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email',
             'phone' => 'required|string|max:15',
             'address' => 'required|string|max:500',
-            'password' => 'required|min:6',
+            'password' => 'required|min:8',
         ]);
 
+        if ($validator->fails()) {
+          return back()->withErrors($validator)->withInput();
+      }
         // Store the user in the database
         users::create([
             'name' => $request->name,
@@ -82,8 +85,9 @@ class UserController extends Controller
             'password' => Hash::make($request->password), // Encrypt password
         ]);
 
-        // Redirect to login page with success message
+       
         return redirect()->route('login')->with('success', 'Account created successfully!');
+
     }
 
     //Login System
