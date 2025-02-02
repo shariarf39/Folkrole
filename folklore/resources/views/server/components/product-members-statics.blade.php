@@ -24,8 +24,8 @@
                 <div class="card">
                     <div class="card-header d-flex align-items-center justify-content-between pb-0">
                         <div class="card-title mb-0">
-                            <h5 class="m-0 me-2">Order Statistics</h5>
-                            <small class="text-muted">NUB Computer Club</small>
+                            <h5 class="m-0 me-2">Course Statistics</h5>
+                            <small class="text-muted"></small>
                         </div>
                         <div class="dropdown">
                             <button class="btn p-0" type="button" id="orederStatistics" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -54,7 +54,7 @@
                                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                     <div class="me-2">
                                         <h6 class="mb-0">Courses</h6>
-                                        <small class="text-muted">C, C++, Java</small>
+                                        <small class="text-muted">BIFCD</small>
                                     </div>
                                     <div class="user-progress">
                                         <small class="fw-semibold">82.5k</small>
@@ -68,7 +68,7 @@
                                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                     <div class="me-2">
                                         <h6 class="mb-0">Clothes</h6>
-                                        <small class="text-muted">NUBCC T-shirt</small>
+                                        <small class="text-muted">BIFCD T-shirt</small>
                                     </div>
                                     <div class="user-progress">
                                         <small class="fw-semibold">23.8k</small>

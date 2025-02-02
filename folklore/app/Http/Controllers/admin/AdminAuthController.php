@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Admin;
 use App\Models\Course;
-
+use App\Models\Gallery;
+use App\Models\News;
 use Illuminate\Support\Facades\Hash;
 
 class AdminAuthController extends Controller
@@ -40,6 +41,18 @@ class AdminAuthController extends Controller
         
         $admins = Admin::all();
         return view('server/pages/admin', compact('admins'));
+    }
+
+    public function adminGallery()
+    {
+        $images = Gallery::all();
+        return view('server/pages/gallery', compact('images'));
+    }
+
+    public function adminNews()
+    {
+        $news = News::orderBy('created_at', 'desc')->get();
+        return view('server/pages/news', compact('news'));
     }
 
     public function plogin(Request $request)
@@ -174,11 +187,108 @@ public function coursechangeStatus(Request $request)
 }
 
 
+public function storeGallery(Request $request)
+{
+  
+    // Save to database
+    $gallery = new Gallery();
+    $gallery->title = $request->title;
+    $gallery->is_active = $request->has('is_active') ? 1 : 0;
+
+    if ($request->hasFile('image')) {
+        $file = $request->file('image');
+        $filename = uniqid() . '_' . $file->getClientOriginalName();
+        $file->move('uploads/images/gallery', $filename);
+        $gallery->image = $filename;
+    }
+    $gallery->save();
 
 
+    return redirect()->back()->with('success', 'Image uploaded successfully.');
+}
+
+
+public function destroyGallery($id)
+{
+    $image = Gallery::findOrFail($id);
+    $imagePath = public_path('uploads/images/gallery/'.$image->image);
+
+    if (file_exists($imagePath)) {
+        unlink($imagePath);
+    }
+
+    $image->delete();
+    return redirect()->back()->with('success', 'Image deleted successfully.');
+}
+
+
+public function gallerychangeStatus(Request $request)
+{
+    $admin = Gallery::find($request->id);
+    $admin->is_active = $request->status;
+    $admin->save();
+
+    return redirect()->back()->with('success', 'Gallery status updated successfully.');
+}
+
+
+  // Store news
+  public function storeNews(Request $request)
+  {
+      
+     
+
+    $news = new News();
+    $news->title = $request->title;
+    $news->short_description = $request->short_description;
+    $news->full_description = $request->full_description;
+    $news->news_date = $request->news_date;
+    $news->is_active = $request->has('is_active') ? 1 : 0;
+
+    if ($request->hasFile('image')) {
+        $file = $request->file('image');
+        $filename = uniqid() . '_' . $file->getClientOriginalName();
+        $file->move('uploads/images/news', $filename);
+        $news->image = $filename;
+    }
+    $news->save();
+
+
+ 
+
+      return redirect()->back()->with('success', 'News uploaded successfully');
+  }
+
+  // Delete news
+  public function destroyNews($id)
+  {
+      $news = News::findOrFail($id);
+  
+      // Construct the full image path
+      $imagePath = public_path('uploads/images/news/' . $news->image);
+  
+      if (file_exists($imagePath)) {
+        unlink($imagePath);
+    }
+  
+      $news->delete();
+  
+      return redirect()->back()->with('success', 'News deleted successfully');
+  }
+
+  // Toggle active status
+  public function toggleStatusNews(Request $request)
+  {
+    $admin = News::find($request->id);
+    $admin->is_active = $request->status;
+    $admin->save();
+
+    return redirect()->back()->with('success', 'Gallery status updated successfully.');
+  }
+}
 
    
-}
+
 
 
 

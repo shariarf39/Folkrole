@@ -69,6 +69,18 @@ Route::controller(ProfileController::class)->group(function(){
         Route::post('/deleteCourse', 'deleteCourse')->name('deleteCourse')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
         Route::post('/coursechangeStatus', 'coursechangeStatus')->name('coursechangeStatus')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
 
+        Route::get('/adminGallery', 'adminGallery')->name('adminGallery')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
+        Route::post('/storeGallery', 'storeGallery')->name('storeGallery')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
+        Route::delete('/images/{id}', 'destroyGallery')->name('images.destroy')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
+        Route::post('/gallerychangeStatus', 'gallerychangeStatus')->name('gallerychangeStatus')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
+
+
+        Route::get('/adminNews', 'adminNews')->name('adminNews')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
+        Route::post('/news/store', 'storeNews')->name('storeNews')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
+        Route::delete('/news/{id}', 'destroyNews')->name('news.destroy')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
+        Route::post('/toggleStatusNews','toggleStatusNews')->name('toggleStatusNews')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
+
+
 
 
 
