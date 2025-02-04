@@ -93,18 +93,28 @@
                             <div data-i18n="Basic">Course</div>
                         </a>
                     </li>
-                    <li class="menu-item">
-                        <a href="{{'adminCourse'}}" class="menu-link">
-                            <i class="fa-solid fa-arrows-down-to-people me-2"></i>
-                            <div data-i18n="Basic">Live Class</div>
-                        </a>
-                    </li>
+
                     <li class="menu-item">
                         <a href="{{'adminCourse'}}" class="menu-link">
                             <i class="fa-solid fa-arrows-down-to-people me-2"></i>
                             <div data-i18n="Basic">Batch</div>
                         </a>
                     </li>
+ 
+                    <li class="menu-item">
+                        <a href="{{'adminCourse'}}" class="menu-link">
+                            <i class="fa-solid fa-arrows-down-to-people me-2"></i>
+                            <div data-i18n="Basic">Live Class</div>
+                        </a>
+                    </li>
+                 
+                    <li class="menu-item">
+                        <a href="{{ 'adminebook' }}" class="menu-link">
+                            <i class="fa-solid fa-arrows-down-to-people me-2"></i>
+                            <div data-i18n="Basic">eBook</div>
+                        </a>
+                    </li>
+
                     <li class="menu-item">
                         <a href="{{'adminGallery'}}" class="menu-link">
                             <i class="fa-solid fa-arrows-down-to-people me-2"></i>
@@ -129,12 +139,7 @@
                             <div data-i18n="Basic">Check Assignment</div>
                         </a>
                     </li>
-                    <li class="menu-item">
-                        <a href="" class="menu-link">
-                            <i class="fa-solid fa-arrows-down-to-people me-2"></i>
-                            <div data-i18n="Basic">book</div>
-                        </a>
-                    </li>
+                
                     
             </aside>
 

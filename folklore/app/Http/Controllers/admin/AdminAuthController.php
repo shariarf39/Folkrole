@@ -9,6 +9,7 @@ use App\Models\Admin;
 use App\Models\Course;
 use App\Models\Gallery;
 use App\Models\News;
+use App\Models\Ebook;
 use Illuminate\Support\Facades\Hash;
 
 class AdminAuthController extends Controller
@@ -42,6 +43,17 @@ class AdminAuthController extends Controller
         $admins = Admin::all();
         return view('server/pages/admin', compact('admins'));
     }
+
+    public function adminebook(Request $request)
+    {
+        $search = $request->search;
+        $ebooks = Ebook::when($search, function ($query, $search) {
+            return $query->where('title', 'like', '%' . $search . '%');
+        })->get(); // Retrieve all matching records without pagination
+    
+        return view('server/pages/ebook', compact('ebooks'));
+    }
+    
 
     public function adminGallery()
     {
@@ -285,6 +297,59 @@ public function gallerychangeStatus(Request $request)
 
     return redirect()->back()->with('success', 'Gallery status updated successfully.');
   }
+
+
+  public function storeEbook(Request $request)
+  {
+    
+      $ebook = new Ebook();
+      $ebook->title = $request->title;
+      $ebook->shortdes = $request->short_description;
+      $ebook->fulldes = $request->full_description;
+      $ebook->regularprice = $request->regular_price;
+      $ebook->offerprice = $request->offer_price;
+      $ebook->is_active = $request->has('is_active') ? 1 : 0;
+  
+      if ($request->hasFile('file')) {
+          $file = $request->file('file');
+          $filename = uniqid() . '_' . $file->getClientOriginalName();
+          $file->move('uploads/pdf/ebooks', $filename);
+          $ebook->file_path = $filename;
+      }
+      $ebook->save();
+  
+
+  
+        return redirect()->back()->with('success', 'News uploaded successfully');
+  }
+
+  public function destroyEbook($id)
+  {
+      $ebook = Ebook::findOrFail($id);
+
+      $pdfPath = public_path('uploads/pdf/ebooks' . $ebook->file_path);
+  
+      if (file_exists($pdfPath)) {
+        unlink($pdfPath);
+    }
+  
+      $ebook->delete();
+  
+
+      return back()->with('success', 'eBook deleted successfully.');
+  }
+
+  public function toggleStatusEbook($id)
+  {
+      $ebook = Ebook::findOrFail($id);
+      $ebook->is_active = !$ebook->is_active;
+      $ebook->save();
+
+      return back()->with('success', 'eBook status updated.');
+  }
+
+ 
+  
 }
 
    

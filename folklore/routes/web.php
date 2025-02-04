@@ -80,7 +80,11 @@ Route::controller(ProfileController::class)->group(function(){
         Route::delete('/news/{id}', 'destroyNews')->name('news.destroy')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
         Route::post('/toggleStatusNews','toggleStatusNews')->name('toggleStatusNews')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
 
-
+        Route::get('adminebook', 'adminebook')->name('adminebook')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
+        Route::delete('/admin/ebooks/{id}', 'destroyEbook')->name('ebooks.destroy')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
+        Route::post('storeEbook','storeEbook')->name('storeEbook')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
+        Route::post('/admin/ebooks/toggle/{id}',  'toggleStatusEbook')->name('ebooks.toggle')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
+        Route::get('adminSearchEbook','adminSearchEbook')->name('adminSearchEbook') ->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
 
 
 
