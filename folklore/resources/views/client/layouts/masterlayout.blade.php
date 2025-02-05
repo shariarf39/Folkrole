@@ -29,13 +29,15 @@
                     <ul class="dropdown">
                         <li><a href="{{route('aboutpage')}}">About Us</a></li>
                         <li><a href="{{route('management')}}">Management</a></li>
+                        <li><a href="{{route('donate')}}">Donate</a></li>
                     </ul>
                 </li>
                 <li><a href="{{route('newsevent')}}">News & Events</a></li>
                 <li><a href="{{route('gallerysec')}}">Gallery</a></li>
                 <li><a href="{{route('Publications')}}">Publications</a></li>
+                <li><a href="{{route('userEbook')}}">Ebook</a></li>
                 <li><a href="{{route('contactus')}}">Contact Us</a></li>
-                <li><a href="{{route('donate')}}">Donate</a></li>
+              
 
                 @if(Auth::check())
                <li>

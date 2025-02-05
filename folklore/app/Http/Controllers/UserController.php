@@ -13,6 +13,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\users;
+use App\Models\EbookPurchase;
+use App\Models\Ebook;
 
 class UserController extends Controller
 {
@@ -57,6 +59,42 @@ class UserController extends Controller
     {
         return view('client/pages/aboutpage');
     }
+
+    public function userEbook() {
+      $ebooks = Ebook::where('is_active', true)->get();
+      return view('client/pages/userEbook', compact('ebooks'));
+  }
+
+
+  public function userShowEbook(Ebook $ebook) {
+    $user = Auth::user();
+    $hasPurchased = $user ? $ebook->purchases()->where('id', $user->id)->exists() : false;
+    return view('client/pages/EbookShow', compact('ebook', 'hasPurchased'));
+}
+
+public function userShowPdf(Ebook $ebook) {
+  $user = Auth::user();
+  $hasPurchased = $user ? $ebook->purchases()->where('id', $user->id)->exists() : false;
+  return view('client/pages/pdfshow', compact('ebook', 'hasPurchased'));
+}
+
+public function purchaseEbook(Request $request, Ebook $ebook) {
+    $request->validate([
+        'payment_method' => 'required',
+        'phone_number' => 'required',
+        'transaction_id' => 'required|unique:ebook_purchases',
+    ]);
+
+    EbookPurchase::create([
+        'user_id' => Auth::id(),
+        'ebook_id' => $ebook->id,
+        'payment_method' => $request->payment_method,
+        'phone_number' => $request->phone_number,
+        'transaction_id' => $request->transaction_id,
+    ]);
+
+    return redirect()->route('client/pages/EbookShow', $ebook)->with('success', 'Purchase successful! You can now download the full PDF.');
+}
 
 
     //Backend Code Here form start

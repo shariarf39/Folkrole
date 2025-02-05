@@ -18,10 +18,23 @@ Route::controller(UserController::class)->group(function(){
     Route::get('/donate', 'donate')->name('donate');
     Route::get('/Publications', 'Publications')->name('Publications');
     Route::get('/aboutpage', 'aboutpage')->name('aboutpage');
+    Route::get('/userEbook', 'userEbook')->name('userEbook');
 
     //Backend
     Route::post('/userRegister', 'userRegister')->name('userRegister');
     Route::post('/userLogin',  'userLogin')->name('userLogin');
+
+    Route::middleware(['auth'])->group(function () {
+        
+      
+        Route::get('/ebooks/{ebook}', 'userShowEbook')->name('ebooks.show');
+        Route::get('/pdfzs/{ebook}', 'userShowPdf')->name('pdf.show');
+        Route::post('/ebooks/{ebook}/purchase', 'purchaseEbook')->name('ebooks.purchase');
+
+
+    });
+
+
   
 
 
@@ -45,6 +58,10 @@ Route::controller(ProfileController::class)->group(function(){
         Route::get('/assignment', 'assignment')->name('assignment');
         Route::get('/book', 'book')->name('book');
         Route::get('/courseplan', 'courseplan')->name('courseplan');
+
+
+
+
 
     });
 
