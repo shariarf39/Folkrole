@@ -1,29 +1,29 @@
 @extends('client.layouts.masterlayout')
 @section('content')
 
-<link rel="stylesheet" href="style/Publications.css">
+<link rel="stylesheet" href="{{asset('style/user_ebook.css')}}">
 
-<main>
-  <section id="publications" class="publications-section">
-    <h1 class="publication_heading">Our Publications</h1>
-    <hr>
-    <div class="publications-grid">
-    @foreach($ebooks as $ebook)
+<div class="publication_book">
+    <section id="publications" class="publications-section">
+        <h1 class="publication_heading">Our E-Book</h1>
+        <hr>
+        <div class="publications-grid">
+            @foreach($ebooks as $ebook)
+            <article class="publication">
+                <div class="pdf-preview_book">
+                    <div id="pdf-container-book-{{ $ebook->id }}" style="width: 100%; height: 100%;"></div>
+                </div>
+                <h2>{{ $ebook->title }}</h2>
+                <p>{{ Str::limit($ebook->shortdes, 150) }}</p>
+                <a href="{{ route('ebooks.show', $ebook->id) }}" class="book-link">View Book</a>
+            </article>
+            @endforeach
+        </div>
+    </section>
+</div>
 
-      <article class="publication">
-      <div class="pdf-preview_book">
-                            <div id="pdf-container-book-{{ $ebook->id }}" style="width: 100%; height: 100%;"></div>
-                        </div>
-        <h2>{{ $ebook->title }}</h2>
-        <p>{{ Str::limit($ebook->shortdes, 150) }}</p>
-        <a href="{{ route('ebooks.show', $ebook->id) }}" class="book-link">View Book</a>
-      </article>
 
-    @endforeach
 
-    </div>
-  </section>
-</main>
 
 
 
@@ -49,7 +49,7 @@
                         pdfContainer.appendChild(canvas);
                         var context = canvas.getContext("2d");
 
-                        var viewport = page.getViewport({ scale: 0.3 });
+                        var viewport = page.getViewport({ scale: 0.5});
 
                         canvas.width = viewport.width;
                         canvas.height = viewport.height;

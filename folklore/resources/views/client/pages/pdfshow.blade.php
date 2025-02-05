@@ -1,8 +1,45 @@
 
-  <div class="mb-4">
-        <h4>Preview</h4>
-        <div id="pdf-container"></div>
-    </div>
+<div class="mb-4">
+    <h4>Preview</h4>
+    <hr>
+    <div id="pdf-container" style="width: 100%; overflow-x: auto;"></div>
+</div>
+<style>
+    hr{
+        width: 150px;
+        margin: 0 auto;
+        border: none;
+        background-color: red;
+        height: 3px;
+        border-radius: 50%;
+        margin-bottom: 1.2rem;
+    }
+
+    .mb-4{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        width: 100%;
+        padding: 0;
+    }
+
+    .mb-4 h4{
+        font-family: 'Pacifico', cursive;
+        font-size: 2.5rem;
+        margin-bottom: .2rem;
+        color:#00ff00;
+        font-weight: 600;
+    }
+    #pdf-container canvas {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+</style>
+
 
 
 {{-- PDF.js Script --}}

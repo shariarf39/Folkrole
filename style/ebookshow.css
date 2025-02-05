@@ -1,0 +1,351 @@
+/* Navbar Section */
+
+
+#header {
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0.5rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.logo img {
+    height: 50px;
+}
+
+nav {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.container #menu-toggle {
+    display: none;
+    background: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+#menu-toggle i {
+    display: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    padding: 0.5rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #007bff;
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    list-style: none;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: none;
+    padding: 1rem .5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.dropdown a {
+    display: block;
+    padding: 0.5rem;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.nav-links li:hover .dropdown {
+    display: block;
+}
+
+.join-btn {
+    padding: .5rem 1rem !important;
+    background: blue;
+    color: white !important;
+    border-radius: 15px;
+    text-decoration: none;
+    transition: .5s ease background !important;
+    border: none;
+}
+
+.join-btn:hover {
+    background: black;
+    color: white !important;
+}
+
+
+@media (max-width: 768px) {
+    .container #menu-toggle i {
+        display: block;
+        justify-content: flex-end;
+        align-items: center;
+        z-index: 1001;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 13%;
+        left: 0;
+        width: 70%;
+        height: auto;
+        background: #fff;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        padding: 2rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transform: translateX(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: transform 0.5s, opacity 0.5s;
+        z-index: 999;
+        border-radius: 0 0 20px 20px;
+        border-top: none;
+    }
+
+    .nav-links.show {
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-links a {
+        padding: .5rem 1rem;
+        display: block;
+        text-align: center;
+    }
+
+    .dropdown {
+        position: static;
+        box-shadow: none;
+    }
+
+    body.nav-open {
+        overflow: hidden;
+    }
+}
+
+
+
+.ebook_show_container {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    background: #fff;
+    padding: 3rem 5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.ebook_show_container h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.mb-4 strong {
+    font-weight: bold;
+    color: blue;
+}
+
+.mb-4 .book_des {
+    font-size: 16px;
+    text-transform: capitalize;
+}
+
+.mb-4 .book_price {
+    font-size: 16px;
+    padding: .2rem 0 1rem 0;
+    text-transform: capitalize;
+}
+
+.view_pdf {
+    display: inline-block;
+    padding: .6rem 1.5rem;
+    color: #fff;
+    text-align: center;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 20px 10px 20px 10px;
+    cursor: pointer;
+    background-color: blue;
+    border: 1px solid blue;
+    transition: all .5s ease;
+}
+
+.view_pdf:hover {
+    background-color: transparent;
+    color: blue;
+    border-radius: 10px 20px 10px 20px;
+}
+
+p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.bton {
+    display: inline-block;
+    padding: 10px 15px;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #3498db;
+}
+
+.btn-success {
+    background-color: #27ae60;
+}
+
+.btn-outline-primary {
+    background-color: transparent;
+    border: 2px solid #3498db;
+    color: #3498db;
+}
+
+.btn-outline-primary:hover {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.alert {
+    background-color: #f1c82c;
+    color: green;
+    padding: .75rem 1.5rem;
+    border-radius: 15px 5px 15px 5px;
+    margin: 15px 0;
+}
+
+.alert strong {
+    color: black;
+    font-weight: bold;
+}
+
+.mt-4 h4 {
+    font-size: 2rem;
+    padding: .5rem 0;
+    text-transform: uppercase;
+    color: blue;
+    text-align: center;
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+button[type="submit"] {
+    font-size: 1rem;
+    background-color: blue;
+    color: white;
+    padding: 9px 20px;
+    margin: 1rem 0;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: black;
+}
+
+button[type="submit"]:active {
+    box-shadow: 0 .2rem 1rem red;
+}
+
+@media (max-width: 768px) {
+    .ebook_show_container {
+        padding: 2rem;
+    }
+
+    .view_pdf,
+    .bton {
+        padding: 0.5rem 1rem;
+    }
+
+    button[type="submit"] {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .ebook_show_container {
+        padding: 1.5rem;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    .bton {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+}
