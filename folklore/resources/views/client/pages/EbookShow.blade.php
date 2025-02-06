@@ -10,7 +10,7 @@
         <div class="mb-4">
             <p class="book_des"><strong>Description:</strong> {{ $ebook->fulldes }}</p>
             <p class="book_price"><strong>Price:</strong> ${{ number_format($ebook->offerprice ?? $ebook->regularprice, decimals: 2) }}</p>
-            <a href="{{ route('pdf.show', $ebook->id) }}" class="view_pdf">View PDF</a>
+            <a href="{{ route('pdf.show', $ebook->id) }}" target="_blank" class="view_pdf">View PDF</a>
         </div>
 
         @if($hasPurchased)

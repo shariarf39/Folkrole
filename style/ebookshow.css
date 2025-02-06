@@ -168,18 +168,19 @@ nav {
 
 
 
+
 .ebook_show_container {
-    max-width: 800px;
+    max-width: 500px;
     width: 100%;
     margin: 0 auto;
     background: #fff;
-    padding: 3rem 5rem;
+    padding: 2rem 5rem;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .ebook_show_container h2 {
-    font-size: 28px;
+    font-size: 17px;
     margin-bottom: 20px;
     text-transform: uppercase;
 }
@@ -187,37 +188,44 @@ nav {
 .mb-4 strong {
     font-weight: bold;
     color: blue;
+    font-size: 1rem;
 }
 
 .mb-4 .book_des {
-    font-size: 16px;
+    font-size: 1rem;
     text-transform: capitalize;
 }
 
 .mb-4 .book_price {
-    font-size: 16px;
+    font-size: 1rem;
     padding: .2rem 0 1rem 0;
     text-transform: capitalize;
 }
 
 .view_pdf {
     display: inline-block;
-    padding: .6rem 1.5rem;
+    padding: .4rem 1rem;
     color: #fff;
     text-align: center;
-    font-weight: 600;
+    font-weight: 400;
     text-decoration: none;
-    border-radius: 20px 10px 20px 10px;
+    border-radius: 20px;
     cursor: pointer;
     background-color: blue;
     border: 1px solid blue;
     transition: all .5s ease;
-}
 
-.view_pdf:hover {
-    background-color: transparent;
-    color: blue;
-    border-radius: 10px 20px 10px 20px;
+    &:hover {
+        background-color: transparent;
+        color: blue;
+        border-radius: 20px;
+    }
+
+    &:active {
+        background-color: red;
+        color: black;
+    }
+
 }
 
 p {
@@ -260,6 +268,8 @@ p {
     padding: .75rem 1.5rem;
     border-radius: 15px 5px 15px 5px;
     margin: 15px 0;
+    font-weight: 600;
+    font-size: .7rem;
 }
 
 .alert strong {
@@ -268,7 +278,7 @@ p {
 }
 
 .mt-4 h4 {
-    font-size: 2rem;
+    font-size: 1.2rem;
     padding: .5rem 0;
     text-transform: uppercase;
     color: blue;
@@ -288,7 +298,7 @@ label {
 input[type="text"],
 select {
     width: 100%;
-    padding: 10px;
+    padding: 8px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -299,7 +309,7 @@ button[type="submit"] {
     font-size: 1rem;
     background-color: blue;
     color: white;
-    padding: 9px 20px;
+    padding: 7px 15px;
     margin: 1rem 0;
     border: none;
     border-radius: 20px;
@@ -312,7 +322,8 @@ button[type="submit"]:hover {
 }
 
 button[type="submit"]:active {
-    box-shadow: 0 .2rem 1rem red;
+    background-color: red;
+    color: black;
 }
 
 @media (max-width: 768px) {
