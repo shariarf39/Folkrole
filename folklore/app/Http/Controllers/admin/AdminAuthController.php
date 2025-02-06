@@ -10,6 +10,9 @@ use App\Models\Course;
 use App\Models\Gallery;
 use App\Models\News;
 use App\Models\Ebook;
+use App\Models\users;
+use App\Models\EbookPurchase;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class AdminAuthController extends Controller
@@ -44,6 +47,14 @@ class AdminAuthController extends Controller
         return view('server/pages/admin', compact('admins'));
     }
 
+    public function users()
+    {
+        
+        $users = users::all();
+        return view('server/pages/users', compact('users'));
+    }
+
+
     public function adminebook(Request $request)
     {
         $search = $request->search;
@@ -53,6 +64,29 @@ class AdminAuthController extends Controller
     
         return view('server/pages/ebook', compact('ebooks'));
     }
+
+ 
+public function ebookPurchasesTable(Request $request)
+{
+    $search = $request->search;
+
+    $ebooks = DB::table('ebook_purchases')
+        ->join('users', 'ebook_purchases.user_id', '=', 'users.id')
+        ->join('ebooks', 'ebook_purchases.ebook_id', '=', 'ebooks.id')
+        ->select('ebook_purchases.*', 'ebook_purchases.id as pur_id','ebook_purchases.is_active as pur_is_active', 'users.*', 'ebooks.*')
+        ->when($search, function ($query, $search) {
+            return $query->where(function ($q) use ($search) {
+                $q->where('ebooks.title', 'like', '%' . $search . '%')
+                  ->orWhere('users.name', 'like', '%' . $search . '%');
+            });
+           
+        })
+        ->orderBy('ebook_purchases.is_active', 'asc') // Sorts by is_active (1 first, then 2)
+        ->get();
+
+    return view('server/pages/ebookPurchasesTable', compact('ebooks'));
+}
+    
     
 
     public function adminGallery()
@@ -347,6 +381,44 @@ public function gallerychangeStatus(Request $request)
 
       return back()->with('success', 'eBook status updated.');
   }
+
+
+
+  // Change the users status (active/deactive)
+
+  public function deleteusers(Request $request)
+{
+ $admin = users::find($request->id);
+
+ if ($admin) {
+     $admin->delete();
+      return redirect()->route('admin')->with('sucess', 'Admin added successfully.');
+ }
+
+
+}
+
+
+
+public function destroyPurEbook($id)
+{
+    $ebook = EbookPurchase::findOrFail($id);
+
+    $ebook->delete();
+
+
+    return back()->with('success', 'eBook deleted successfully.');
+}
+
+public function toggleStatusPurEbook($id)
+{
+    $ebook = EbookPurchase::findOrFail($id);
+    $ebook->is_active = ($ebook->is_active == 1) ? 2 : 1;
+    $ebook->save();
+
+    return back()->with('success', 'eBook status updated.');
+}
+
 
  
   

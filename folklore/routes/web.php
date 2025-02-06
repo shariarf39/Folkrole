@@ -104,6 +104,16 @@ Route::controller(ProfileController::class)->group(function(){
         Route::get('adminSearchEbook','adminSearchEbook')->name('adminSearchEbook') ->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
 
 
+        Route::get('/users', 'users')->name('users')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
+        Route::post('/deleteusers', 'deleteusers')->name('deleteusers')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
+
+        Route::get('ebookPurchasesTable', 'ebookPurchasesTable')->name('ebookPurchasesTable')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
+        Route::delete('/admin/ebookspur/{id}', 'destroyPurEbook')->name('ebookspur.destroy')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
+        Route::post('/admin/ebookspur/toggle/{id}',  'toggleStatusPurEbook')->name('ebookspur.toggle')->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
+        Route::get('adminSearchEbook','adminSearchEbook')->name('adminSearchEbook') ->middleware(\App\Http\Middleware\AdminAuthMiddleware::class);
+
+
+
 
         
     });

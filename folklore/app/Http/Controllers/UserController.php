@@ -68,13 +68,19 @@ class UserController extends Controller
 
   public function userShowEbook(Ebook $ebook) {
     $user = Auth::user();
-    $hasPurchased = $user ? $ebook->purchases()->where('id', $user->id)->exists() : false;
+    
+    // Check if the user has purchased the eBook and if the purchase is active
+    $hasPurchased = $user 
+        ? $ebook->purchases()->where('user_id', $user->id)->where('is_active', '2')->exists() 
+        : false;
+
     return view('client/pages/EbookShow', compact('ebook', 'hasPurchased'));
 }
 
+
 public function userShowPdf(Ebook $ebook) {
   $user = Auth::user();
-  $hasPurchased = $user ? $ebook->purchases()->where('id', $user->id)->exists() : false;
+  $hasPurchased = $user ? $ebook->purchases()->where('user_id', $user->id)->exists() : false;
   return view('client/pages/pdfshow', compact('ebook', 'hasPurchased'));
 }
 
@@ -85,6 +91,7 @@ public function purchaseEbook(Request $request, Ebook $ebook) {
         'transaction_id' => 'required|unique:ebook_purchases',
     ]);
 
+
     EbookPurchase::create([
         'user_id' => Auth::id(),
         'ebook_id' => $ebook->id,
@@ -93,7 +100,7 @@ public function purchaseEbook(Request $request, Ebook $ebook) {
         'transaction_id' => $request->transaction_id,
     ]);
 
-    return redirect()->route('client/pages/EbookShow', $ebook)->with('success', 'Purchase successful! You can now download the full PDF.');
+    return redirect()->route('userEbook', $ebook)->with('success', 'Help Line- 018xxxxxxxx Purchase successful! Please wait for approval. Once approved, you will receive an email and can download the full eBook.');
 }
 
 

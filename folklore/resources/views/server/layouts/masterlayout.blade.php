@@ -88,25 +88,22 @@
                     </li>
 
                     <li class="menu-item">
+                        <a href="{{route('users')}}" class="menu-link">
+                            <i class="fa-solid fa-arrows-down-to-people me-2"></i>
+                            <div data-i18n="Basic">Users</div>
+                        </a>
+                    </li>
+
+
+                    <li class="menu-item">
                         <a href="{{'adminCourse'}}" class="menu-link">
                             <i class="fa-solid fa-arrows-down-to-people me-2"></i>
                             <div data-i18n="Basic">Course</div>
                         </a>
                     </li>
 
-                    <li class="menu-item">
-                        <a href="{{'adminCourse'}}" class="menu-link">
-                            <i class="fa-solid fa-arrows-down-to-people me-2"></i>
-                            <div data-i18n="Basic">Batch</div>
-                        </a>
-                    </li>
- 
-                    <li class="menu-item">
-                        <a href="{{'adminCourse'}}" class="menu-link">
-                            <i class="fa-solid fa-arrows-down-to-people me-2"></i>
-                            <div data-i18n="Basic">Live Class</div>
-                        </a>
-                    </li>
+                  
+                
                  
                     <li class="menu-item">
                         <a href="{{ 'adminebook' }}" class="menu-link">
@@ -127,20 +124,17 @@
                             <div data-i18n="Basic">News</div>
                         </a>
                     </li>
+
+
+                        <!-- Components -->
+                        <li class="menu-header small text-uppercase"><span class="menu-header-text">Ebook</span></li>
                     <li class="menu-item">
-                        <a href="{{'adminCourse'}}" class="menu-link">
+                        <a href="{{route('ebookPurchasesTable')}}" class="menu-link">
                             <i class="fa-solid fa-arrows-down-to-people me-2"></i>
-                            <div data-i18n="Basic">Check Attendence</div>
+                            <div data-i18n="Basic">Purchase Ebook</div>
                         </a>
                     </li>
-                    <li class="menu-item">
-                        <a href="{{'adminCourse'}}" class="menu-link">
-                            <i class="fa-solid fa-arrows-down-to-people me-2"></i>
-                            <div data-i18n="Basic">Check Assignment</div>
-                        </a>
-                    </li>
-                
-                    
+                  
             </aside>
 
             <!-- / Menu -->
