@@ -14,6 +14,7 @@ use App\Models\users;
 use App\Models\EbookPurchase;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class AdminAuthController extends Controller
 {
@@ -392,7 +393,7 @@ public function gallerychangeStatus(Request $request)
 
  if ($admin) {
      $admin->delete();
-      return redirect()->route('admin')->with('sucess', 'Admin added successfully.');
+      return redirect()->route('users')->with('sucess', 'Admin added successfully.');
  }
 
 

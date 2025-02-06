@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -85,11 +86,14 @@ public function userShowPdf(Ebook $ebook) {
 }
 
 public function purchaseEbook(Request $request, Ebook $ebook) {
-    $request->validate([
+  $validator = Validator::make($request->all(),[
         'payment_method' => 'required',
         'phone_number' => 'required',
         'transaction_id' => 'required|unique:ebook_purchases',
     ]);
+    if ($validator->fails()) {
+      return back()->withErrors($validator)->withInput();
+  }
 
 
     EbookPurchase::create([
@@ -109,18 +113,20 @@ public function purchaseEbook(Request $request, Ebook $ebook) {
 
     public function userRegister(Request $request)
     {
-        // Validate the request
-        $request->validate([
+        // Define the validation rules
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
-            'phone' => 'required|string|max:15',
+            'phone' => 'required|string|max:15|unique:users,phone',
             'address' => 'required|string|max:500',
             'password' => 'required|min:8',
         ]);
-
+    
+        // Check if validation fails
         if ($validator->fails()) {
-          return back()->withErrors($validator)->withInput();
-      }
+            return back()->withErrors($validator)->withInput();
+        }
+    
         // Store the user in the database
         users::create([
             'name' => $request->name,
@@ -129,10 +135,8 @@ public function purchaseEbook(Request $request, Ebook $ebook) {
             'address' => $request->address,
             'password' => Hash::make($request->password), // Encrypt password
         ]);
-
-       
+    
         return redirect()->route('login')->with('success', 'Account created successfully!');
-
     }
 
     //Login System
