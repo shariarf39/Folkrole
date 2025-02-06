@@ -15,7 +15,9 @@
                             <div id="pdf-container-book-{{ $ebook->id }}" style="width: 100%; height: 100%;"></div>
                         </div>
         <h2>{{ $ebook->title }}</h2>
-        <p>{{ Str::limit($ebook->shortdes, 150) }}</p>
+        <p>
+            
+        {{ Str::limit($ebook->shortdes, 150) }}</p>
         <a href="{{ route('ebooks.show', $ebook->id) }}" class="book-link">View Book</a>
       </article>
 
