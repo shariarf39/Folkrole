@@ -1,6 +1,7 @@
 
 <div class="mb-4">
     <h4>Preview</h4>
+    <p style="color:red;">You can only read the first 10 pages. Please purchase the full book to continue reading.</p>
     <hr>
     <div id="pdf-container" style="width: 100%; overflow-x: auto;"></div>
 </div>
@@ -32,6 +33,7 @@
         color:#00ff00;
         font-weight: 600;
     }
+  
     #pdf-container canvas {
         max-width: 100%;
         height: auto;

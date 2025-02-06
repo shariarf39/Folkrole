@@ -81,7 +81,9 @@ class UserController extends Controller
 
 public function userShowPdf(Ebook $ebook) {
   $user = Auth::user();
-  $hasPurchased = $user ? $ebook->purchases()->where('user_id', $user->id)->exists() : false;
+  $hasPurchased = $user 
+  ? $ebook->purchases()->where('user_id', $user->id)->where('is_active', '2')->exists() 
+  : false;
   return view('client/pages/pdfshow', compact('ebook', 'hasPurchased'));
 }
 

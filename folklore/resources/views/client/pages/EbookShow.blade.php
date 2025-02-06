@@ -1,77 +1,152 @@
-@extends('client.layouts.masterlayout')
-@section('content')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ $ebook->title }} - Ebook Details</title>
+    <link rel="stylesheet" href="{{ asset('style/ebookshow.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom Styles */
+        body {
+            background-color: #f8f9fa;
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        .card-header {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            padding: 1.5rem;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            border: none;
+            transition: transform 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+        .btn-success {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            border: none;
+            transition: transform 0.3s ease;
+        }
+        .btn-success:hover {
+            transform: translateY(-2px);
+        }
+        .alert-warning {
+            background: #fff3cd;
+            border: none;
+            border-radius: 10px;
+        }
+        .modal-content {
+            border: none;
+            border-radius: 15px;
+        }
+        .modal-header {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+        }
+        .form-control:focus {
+            border-color: #6a11cb;
+            box-shadow: 0 0 0 0.2rem rgba(106, 17, 203, 0.25);
+        }
+        .form-select:focus {
+            border-color: #6a11cb;
+            box-shadow: 0 0 0 0.2rem rgba(106, 17, 203, 0.25);
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title mb-0">{{ $ebook->title }}</h2>
+                    </div>
+                    <div class="card-body">
+                        <p class="lead text-muted"><strong>Description:</strong> {{ $ebook->fulldes }}</p>
+                        <div class="mb-4">
+                            <h4 class="text-muted"><strong>Regular Price:</strong> <del>TK. {{ number_format($ebook->regularprice, 2) }}</del></h4>
+                            <h3 class="text-success"><strong>Offer Price:</strong> TK. {{ number_format($ebook->offerprice ?? $ebook->regularprice, 2) }}</h3>
+                        </div>
+                        <a href="{{ route('pdf.show', $ebook->id) }}" target="_blank" class="btn btn-outline-primary btn-lg w-100 mb-3">
+                            <i class="fas fa-book-open"></i> Preview Ebook
+                        </a>
 
-<link rel="stylesheet" href="{{ asset('style/ebookshow.css') }}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+                        @if($hasPurchased)
+                            <a href="{{ asset('uploads/pdf/ebooks/' . $ebook->file_path) }}" class="btn btn-success btn-lg w-100" download>
+                                <i class="fas fa-download"></i> Download Full Book
+                            </a>
+                        @else
+                            <div class="alert alert-warning">
+                                <strong>Note:</strong> You can preview only the first 10 pages. Purchase the full eBook to access all pages.
+                            </div>
 
-<div class="ebook_show_container">
-    <h2 class="mb-4">{{ $ebook->title }}</h2>
-
-    <div class="mb-4">
-        <p class="book_des"><strong>Description:</strong> {{ $ebook->fulldes }}</p>
-        <h3 class="book_price"><strong>Regular Price:</strong> <del>TK. {{ number_format($ebook->regularprice, 2) }}</del></h3>
-        <h3 class="book_price"><strong>Offer Price:</strong> TK. {{ number_format($ebook->offerprice ?? $ebook->regularprice, 2) }}</h3>
-        <a href="{{ route('pdf.show', $ebook->id) }}" target="_blank" class="view_pdf">View Ebook</a>
+                            <div class="mt-4 text-center">
+                                <h4>Buy Full eBook</h4>
+                                <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#paymentModal">
+                                    <i class="fas fa-shopping-cart"></i> Buy Now
+                                </button>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    @if($hasPurchased)
-        <a href="{{ asset('uploads/pdf/ebooks/' . $ebook->file_path) }}" class="btn btn-success" download>
-            <i class="fas fa-download"></i> Download Full Book
-        </a>
-    @else
-        <div class="alert alert-warning">
-            <strong>Note:</strong> You can preview only the first 10 pages. Buy the full eBook to access all pages.
-        </div>
+    <!-- Payment Modal -->
+    <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="paymentModalLabel">Complete Your Purchase</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('ebooks.purchase', $ebook) }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="user_id" value="{{ auth()->id() }}">
 
-        <div class="mt-4">
-            <h4>Buy Full eBook</h4>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#paymentModal">
-                <i class="fas fa-shopping-cart"></i> Buy Now
-            </button>
-        </div>
-    @endif
-</div>
+                        <div class="mb-3">
+                            <label class="form-label">Payment Method</label>
+                            <select name="payment_method" class="form-select" required>
+                                <option value="Bkash">Bkash</option>
+                                <option value="Nagad">Nagad</option>
+                            </select>
+                        </div>
 
-<!-- Payment Modal -->
-<div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="paymentModalLabel">Complete Your Purchase</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="{{ route('ebooks.purchase', $ebook) }}" method="POST">
-                    @csrf
-                    <input type="hidden" name="user_id" value="{{ auth()->id() }}">
+                        <div class="mb-3">
+                            <label class="form-label">Phone Number</label>
+                            <input type="text" name="phone_number" class="form-control" required>
+                        </div>
 
-                    <div class="mb-3">
-                        <label>Payment Method</label>
-                        <select name="payment_method" class="form-control" required>
-                            <option value="Bkash">Bkash</option>
-                            <option value="Nagad">Nagad</option>
-                        </select>
-                    </div>
+                        <div class="mb-3">
+                            <label class="form-label">Transaction ID</label>
+                            <input type="text" name="transaction_id" class="form-control" required>
+                        </div>
 
-                    <div class="mb-3">
-                        <label>Phone Number</label>
-                        <input type="text" name="phone_number" class="form-control" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label>Transaction ID</label>
-                        <input type="text" name="transaction_id" class="form-control" required>
-                    </div>
-
-                    <button type="submit" class="btn btn-success w-100">Submit Payment</button>
-                </form>
+                        <button type="submit" class="btn btn-success w-100">
+                            <i class="fas fa-check-circle"></i> Submit Payment
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-@endsection
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
