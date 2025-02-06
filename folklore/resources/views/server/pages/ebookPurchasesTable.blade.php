@@ -19,7 +19,7 @@
     </div>
 
      <!-- Search Form -->
-     <form method="get" action="{{ route('adminebook') }}" class="mb-4">
+     <form method="get" action="{{ route('ebookPurchasesTable') }}" class="mb-4">
         <div class="input-group">
             <input type="text" name="search" class="form-control" placeholder="Search by title" value="{{ request('search') }}">
             <button type="submit" class="btn btn-primary">
