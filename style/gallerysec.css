@@ -4,12 +4,12 @@
 }
 
 hr {
-    width: 20%;
-    height: 4px;
+    width: 200px;
+    height: 3px;
     background-color: red;
+    margin: 2rem auto !important;
     border: none;
-    margin-top: 20px;
-    margin-bottom: 5rem;
+    border-radius: 50%;
 }
 
 .gallery-container {

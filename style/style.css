@@ -40,13 +40,12 @@ body {
 }
 
 hr {
-    width: 22%;
-    height: 4px;
-    border: none;
+    width: 200px;
+    height: 3px;
     background-color: red;
-    text-align: center;
-    margin: 0 auto;
-    margin-top: 1rem;
+    margin: 2rem auto !important;
+    border: none;
+    border-radius: 50%;
 }
 
 .heading {
@@ -167,6 +166,7 @@ nav {
     border-radius: 15px;
     text-decoration: none;
     transition: .5s ease background !important;
+    border: none;
 }
 
 .join-btn:hover {
@@ -1274,7 +1274,7 @@ button.nextii:hover {
 
 /* social LInk section */
 .social_media_sec .institute_bifcd {
-    font-size: 2rem;
+    font-size: 1.5rem;
     padding: 2rem 0;
     background: linear-gradient(45deg, red, rgb(255, 0, 255), aqua);
     background-clip: text;
@@ -1339,6 +1339,10 @@ button.nextii:hover {
 
     .social {
         padding: 2rem 1rem;
+    }
+
+    .social_media_sec .institute_bifcd {
+        font-size: 1rem;
     }
 }
 
@@ -1552,7 +1556,7 @@ footer {
     }
 
     .footer_box {
-        width: 45%;
+        width: 100%;
         margin: 1rem 0;
         align-items: flex-start;
         text-align: left;
