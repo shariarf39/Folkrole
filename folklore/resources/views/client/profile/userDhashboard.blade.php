@@ -46,7 +46,7 @@
             align-items: center;
             padding: 10px 20px;
             font-size: 16px;
-            transition: .5s ease background, .2s ease color;
+            transition: .5s ease, .2s ease color;
             border: none;
             border-right: 1px solid transparent;
             border-left: 1px solid transparent;
@@ -115,7 +115,8 @@
  
 
     <div class="sidebar" id="sidebar">
-        <h4 class="text-center mt-3">Dashboard</h4>
+        <h4 class="text-center mt-3" >Dashboard</h4>
+        <a href="{{ route('home') }}" class="text-center mt-3"> <h3> Home</h3> </a>
         <a href="{{ route('dashboard') }}" class="nav-link" data-url="{{ route('dashboard') }}"><i class="fas fa-home"></i> Dashboard</a>
         <a href="{{ route('profile')}}" class="nav-link" data-url="{{ route('profile')}}"><i class="fas fa-user"></i> Profile</a>
         <a href="{{route('joinclass')}}" class="nav-link" data-url="{{route('joinclass')}}"><i class="fas fa-cog"></i> Join Class</a>

@@ -26,6 +26,9 @@ class UserController extends Controller
     }
       function login()
     {
+      if (Auth::check()) {
+        return redirect()->route('userDhashboard'); // Redirect if already logged in
+    }
         return view('client/pages/login');
     }
       function userregistration()
@@ -145,18 +148,20 @@ public function purchaseEbook(Request $request, Ebook $ebook) {
    
 
     // Handle the login logic
+
     public function userLogin(Request $request)
     {
         $request->validate([
             'email' => 'required|email',
             'password' => 'required|min:8',
         ]);
-
+    
         // Attempt to log in the user
         if (Auth::attempt($request->only('email', 'password'))) {
-            return redirect()->route('userDhashboard')->with('successLogin', 'Logged in successfully!');
+            // Redirect to the intended URL if available; otherwise, go to the dashboard
+            return redirect()->intended(route('userDhashboard'))->with('successLogin', 'Logged in successfully!');
         }
-
+    
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');

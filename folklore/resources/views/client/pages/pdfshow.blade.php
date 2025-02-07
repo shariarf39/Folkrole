@@ -2,10 +2,17 @@
     <div class="container">
         <div class="text-center">
             <h2 class="preview-title">Preview</h2>
-            <p class="preview-notice">
-                You can only read the first 10 pages. <br> 
-                <strong>Purchase the full book to continue reading.</strong>
-            </p>
+            @if($hasPurchased)
+                <p class="preview-notice">
+                    You have purchased this book. <br> 
+                    <strong>Enjoy reading the full book!</strong>
+                </p>
+            @else
+                <p class="preview-notice">
+                    You can only read the first 10 pages. <br> 
+                    <strong>Purchase the full book to continue reading.</strong>
+                </p>
+            @endif
             <div class="divider"></div>
         </div>
         <div id="pdf-container" class="pdf-preview"></div>
@@ -15,17 +22,19 @@
 <style>
     /* Custom Styles for Preview Section */
     .preview-section {
-        background-color: #ffffff;
-        padding: 3rem 0;
+        background-color: #f8f9fa;
+        padding: 4rem 0;
         margin: 2rem auto;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
     .preview-title {
-        font-family: 'Playfair Display', serif;
+        font-family: 'Merriweather', serif;
         font-size: 2.5rem;
         font-weight: 700;
         color: #2c3e50;
-        margin-bottom: 0.75rem;
+        margin-bottom: 1rem;
     }
 
     .preview-notice {
@@ -57,7 +66,7 @@
     .pdf-preview {
         width: 100%;
         overflow-x: auto;
-        background-color: #f9f9f9;
+        background-color: #ffffff;
         border: 1px solid #e0e0e0;
         border-radius: 12px;
         padding: 1.5rem;
@@ -68,7 +77,7 @@
         max-width: 100%;
         height: auto;
         display: block;
-        margin: 0 auto;
+        margin: 1rem auto;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         border-radius: 8px;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -77,6 +86,44 @@
     #pdf-container canvas:hover {
         transform: translateY(-5px);
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .preview-title {
+            font-size: 2rem;
+        }
+
+        .preview-notice {
+            font-size: 1rem;
+        }
+
+        .pdf-preview {
+            padding: 1rem;
+        }
+
+        #pdf-container canvas {
+            margin: 0.5rem auto;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .preview-title {
+            font-size: 1.75rem;
+        }
+
+        .preview-notice {
+            font-size: 0.95rem;
+        }
+
+        .divider {
+            width: 80px;
+            height: 3px;
+        }
+
+        .preview-section:hover .divider {
+            width: 100px;
+        }
     }
 </style>
 

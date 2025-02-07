@@ -24,7 +24,7 @@ Route::controller(UserController::class)->group(function(){
     Route::post('/userRegister', 'userRegister')->name('userRegister');
     Route::post('/userLogin',  'userLogin')->name('userLogin');
 
-    Route::middleware(['auth'])->group(function () {
+    Route::middleware(['auth', \App\Http\Middleware\RedirectIfNotAuthenticated::class])->group(function () {
         
       
         Route::get('/ebooks/{ebook}', 'userShowEbook')->name('ebooks.show');
