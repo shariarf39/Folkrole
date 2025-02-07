@@ -23,8 +23,7 @@
                 <table class="table table-hover">
                     <thead class="table-light">
                         <tr>
-                            <th>Name</th>
-                            <th>Phone</th>
+                          
                             <th>Title</th>
                             <th>Payment Number</th>
                             <th>Method</th>
@@ -41,8 +40,6 @@
                         @else
                             @foreach($ebooks as $ebook)
                                 <tr>
-                                    <td>{{ $ebook->name }}</td>
-                                    <td>{{ $ebook->phone }}</td>
                                     <td>{{ $ebook->title }}</td>
                                     <td>{{ $ebook->phone_number }}</td>
                                     <td>{{ $ebook->payment_method }}</td>

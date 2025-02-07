@@ -37,23 +37,29 @@ class ProfileController extends Controller
 
     public function book(Request $request)
     {
-
         $search = $request->search;
-
-    $ebooks = DB::table('ebook_purchases')
-        ->join('users', 'ebook_purchases.user_id', '=', 'users.id')
-        ->join('ebooks', 'ebook_purchases.ebook_id', '=', 'ebooks.id')
-        ->select('ebook_purchases.*', 'ebook_purchases.id as pur_id','ebook_purchases.is_active as pur_is_active', 'users.*', 'ebooks.*')
-        ->when($search, function ($query, $search) {
-            return $query->where(function ($q) use ($search) {
-                $q->where('ebooks.title', 'like', '%' . $search . '%')
-                  ->orWhere('users.name', 'like', '%' . $search . '%');
-            });
-           
-        })
-        ->orderBy('ebook_purchases.is_active', 'asc') // Sorts by is_active (1 first, then 2)
-        ->get();
-       
+        $userId = Auth::id(); // Get the logged-in user's ID
+    
+        $ebooks = DB::table('ebook_purchases')
+            ->join('users', 'ebook_purchases.user_id', '=', 'users.id')
+            ->join('ebooks', 'ebook_purchases.ebook_id', '=', 'ebooks.id')
+            ->select(
+                'ebook_purchases.*', 
+                'ebook_purchases.id as pur_id',
+                'ebook_purchases.is_active as pur_is_active', 
+                'users.*', 
+                'ebooks.*'
+            )
+            ->where('ebook_purchases.user_id', $userId) // Show only logged-in user's data
+            ->when($search, function ($query, $search) {
+                return $query->where(function ($q) use ($search) {
+                    $q->where('ebooks.title', 'like', '%' . $search . '%')
+                      ->orWhere('users.name', 'like', '%' . $search . '%');
+                });
+            })
+            ->orderBy('ebook_purchases.is_active', 'asc') // Sort by is_active
+            ->get();
+    
         return view('client/profile/book', compact('ebooks'));
     }
 
