@@ -571,7 +571,7 @@ button.nextii:hover {
 .service p {
     padding: 1rem;
     letter-spacing: 1px;
-    font-weight: bold;
+    font-weight: normal;
 }
 
 @media screen and (max-width: 768px) {
