@@ -7,9 +7,9 @@
         border: 1px solid #c3e6cb;
         padding: 10px;
         border-radius: 5px;
-        margin: 20px auto; /* Centers the box horizontally */
-        text-align: center; /* Centers the text inside the box */
-        max-width: 400px; /* Optional: To limit the width of the alert box */
+        margin: 20px auto;
+        text-align: center;
+        max-width: 400px;
     }
 
     .error-box {

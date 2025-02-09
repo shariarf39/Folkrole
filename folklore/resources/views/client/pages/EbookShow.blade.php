@@ -12,11 +12,23 @@
         body {
             background-color: #f8f9fa;
         }
+        .container{
+            margin: 0 auto !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            padding: 2rem 0;
+        }
         .card {
             border: none;
             border-radius: 15px;
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100% !important;
+            padding: 0;
+            padding-bottom: 1rem;
+            border: 1px solid grey;
+            width: 100% !important;
         }
         .card:hover {
             transform: translateY(-5px);
@@ -64,6 +76,16 @@
             border-color: #6a11cb;
             box-shadow: 0 0 0 0.2rem rgba(106, 17, 203, 0.25);
         }
+
+        .acc_num,
+        .bkash,
+        .nagad {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: .5rem  1rem .5rem 2.5rem;
+        }
     </style>
 </head>
 <body>
@@ -106,6 +128,12 @@
         </div>
     </div>
 
+
+
+
+
+
+
     <!-- Payment Modal -->
     <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -114,6 +142,41 @@
                     <h5 class="modal-title" id="paymentModalLabel">Complete Your Purchase</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+
+<div class="payment_items" style="padding: 20px 0; font-family: Arial;">
+        <div class="bkash">
+            <p class="acc_no" style="font-size: 12px; margin:0;"><span style="font-size: 12px; color: #2575fc; font-weight:600;">Bkash: &nbsp;</span>
+                +880 1755-513176 
+                <i class="fas fa-copy" 
+                   style="cursor: pointer; margin-left: 5px;" 
+                   onclick="copyToClipboard('+880 1755-513176')"></i>
+            </p>
+        </div>
+        <div class="nagad">
+            <p class="acc_no" style="font-size: 12px; margin:0;"><span style="font-size: 12px; color: #2575fc; font-weight:600;">Nagad: &nbsp;</span>
+                +880 1755-513176 
+                <i class="fas fa-copy" 
+                   style="cursor: pointer; margin-left: 5px;" 
+                   onclick="copyToClipboard('+880 1755-513176')"></i>
+            </p>
+        </div>
+
+
+    <div class="acc_num">
+        <p style="font-size: 12px;"><span style="font-size: 12px; color: #2575fc; font-weight:600;">Account Holder:</span> PROFESSOR DR ANWARUL KARIM</p>
+        <p class="acc_no" style="font-size: 12px;"><span style="font-size: 12px; color: #2575fc; font-weight:600;">Account Number: &nbsp;</span>
+            1121005441202 
+            <i class="fas fa-copy" 
+               style="cursor: pointer; margin-left: 5px;" 
+               onclick="copyToClipboard('1121005441202')"></i>
+        </p>
+        <P style="font-size: 12px;"><span style="font-size: 12px; color: #2575fc; font-weight:600;">Bank Name:</span>&nbsp; Mercantile Bank</P>
+        <p style="font-size: 12px;"><span style="font-size: 12px; color: #2575fc; font-weight:600;">Branch:</span> &nbsp; Banani</p>
+    </div>
+
+
+</div>
+
                 <div class="modal-body">
                     <form action="{{ route('ebooks.purchase', $ebook) }}" method="POST">
                         @csrf
@@ -124,6 +187,7 @@
                             <select name="payment_method" class="form-select" required>
                                 <option value="Bkash">Bkash</option>
                                 <option value="Nagad">Nagad</option>
+                                <option value="Account">Bank</option>
                             </select>
                         </div>
 
@@ -148,5 +212,16 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(function () {
+            alert(`Copied: ${text}`);
+        }).catch(function (err) {
+            console.error('Could not copy text: ', err);
+        });
+    }
+</script>
+
 </body>
 </html>

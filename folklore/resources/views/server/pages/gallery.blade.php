@@ -1,5 +1,4 @@
 @extends('server.layouts.masterlayout')
-
 @section('content')
 
 <div class="container mt-5">

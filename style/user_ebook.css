@@ -26,6 +26,8 @@ hr {
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
+    height: auto;
+    width: 100%;
 }
 
 .publication {
@@ -34,7 +36,7 @@ hr {
     border-radius: .5rem;
     padding: 5px;
     width: 170px;
-    height: 280px;
+    height: auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
@@ -45,20 +47,20 @@ hr {
 }
 
 .pdf-preview_book {
+    position: relative;
     width: 100%;
-    height: 200px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
-    margin-bottom: 15px;
-    background: #eaeaea;
-    display: block;
-    border: 1px solid gray;
-    border-radius: 0.2rem;
+    border: #333 1px solid;
 }
 
 .pdf-preview_book canvas {
-    width: 100%;
-    max-width: 200px;
-    height: auto;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
 }
 
 article {
@@ -86,9 +88,9 @@ article p {
     font-weight: 400;
 }
 
-article .book_price{
+article .book_price {
     font-size: 1rem;
-    font-weight: bold,!important;
+    font-weight: bold, !important;
     color: #333;
     margin: 0;
     margin-bottom: 5px;
@@ -112,12 +114,12 @@ article a {
     width: 50%;
     transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.5s ease;
 
-    &:hover{
+    &:hover {
         background-color: transparent;
         color: black;
     }
 
-    &:active{
+    &:active {
         background-color: red;
     }
 }

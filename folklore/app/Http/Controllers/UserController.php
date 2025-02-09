@@ -63,6 +63,7 @@ class UserController extends Controller
     {
         return view('client/pages/aboutpage');
     }
+ 
 
     public function userEbook() {
       $ebooks = Ebook::where('is_active', true)->get();

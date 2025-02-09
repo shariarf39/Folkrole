@@ -16,9 +16,8 @@
 
 
 <header id="header">
-    <div class="container">
         <div class="logo">
-            <a href="{{ route('home') }}"><img src="img/bifcd_logos.png" alt="BIFCD Logo"></a>
+            <a href="{{ route('home') }}"><img src="img/bifcd_lgo.png" alt="BIFCD Logo"></a>
         </div>
          
         <nav>
@@ -52,7 +51,7 @@
                       </form>
                </li>
                 @else
-                    <!-- Show Sign In/Sign Up -->              
+                
                     <li><a href="{{route('login')}}" class="join-btn login">Login</a></li>
                     <li><a href="{{route('userregistration')}}" class="join-btn registration">Registration</a></li>
                 @endif
@@ -66,7 +65,7 @@
         <button id="menu-toggle" class="menu-toggle" aria-label="Toggle navigation">
                     <i class="fa-solid fa-bars"></i>
                 </button>
-    </div>
+
 </header>
 
 
