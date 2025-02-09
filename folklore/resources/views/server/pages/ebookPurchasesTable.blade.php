@@ -12,12 +12,15 @@
         </div>
     @endif
 
+    {{--
     <!-- Upload eBook Button -->
     <div class="text-end mb-4">
         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#uploadModal">
             <i class="fas fa-upload me-2"></i>Upload eBook
         </button>
     </div>
+
+    --}}
 
      <!-- Search Form -->
      <form method="get" action="{{ route('ebookPurchasesTable') }}" class="mb-4">
@@ -42,6 +45,7 @@
                             <th>Title</th>
                             <th>payment Number</th>
                             <th>Method</th>
+                            <th>Transaction Id</th>
                             <th>Price</th>
                             <th>Status</th>
                             <th>Actions</th>
@@ -60,6 +64,7 @@
                                 <td>{{ $ebook->title }}</td>
                                 <th>{{ $ebook->phone_number}}</th>
                                 <td>{{ $ebook->payment_method }}</td>
+                                <td>{{ $ebook->transaction_id }}</td>
                                 <td> Tk. {{ number_format($ebook->offerprice, 2) }}</td>
                                
                                 <td>

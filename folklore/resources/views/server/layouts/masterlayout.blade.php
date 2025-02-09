@@ -95,12 +95,6 @@
                     </li>
 
 
-                    <li class="menu-item">
-                        <a href="{{'adminCourse'}}" class="menu-link">
-                            <i class="fa-solid fa-arrows-down-to-people me-2"></i>
-                            <div data-i18n="Basic">Course</div>
-                        </a>
-                    </li>
 
                   
                 
@@ -111,19 +105,29 @@
                             <div data-i18n="Basic">eBook</div>
                         </a>
                     </li>
+                    {{--
 
+                        
+                    <li class="menu-item">
+                        <a href="{{'adminCourse'}}" class="menu-link">
+                            <i class="fa-solid fa-arrows-down-to-people me-2"></i>
+                            <div data-i18n="Basic">Course</div>
+                        </a>
+                    </li>
                     <li class="menu-item">
                         <a href="{{'adminGallery'}}" class="menu-link">
                             <i class="fa-solid fa-arrows-down-to-people me-2"></i>
                             <div data-i18n="Basic">Gellary</div>
                         </a>
-                    </li>
+                    </li>  
+                   
+
                     <li class="menu-item">
                         <a href="{{'adminNews'}}" class="menu-link">
                             <i class="fa-solid fa-arrows-down-to-people me-2"></i>
                             <div data-i18n="Basic">News</div>
                         </a>
-                    </li>
+                    </li> --}}
 
 
                         <!-- Components -->
