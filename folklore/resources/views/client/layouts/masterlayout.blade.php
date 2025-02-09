@@ -64,7 +64,7 @@
         </nav>
         <button id="menu-toggle" class="menu-toggle" aria-label="Toggle navigation">
                     <i class="fa-solid fa-bars"></i>
-                </button>
+            </button>
 
 </header>
 

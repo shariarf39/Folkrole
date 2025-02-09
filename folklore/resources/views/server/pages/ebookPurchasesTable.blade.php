@@ -1,6 +1,7 @@
 @extends('server.layouts.masterlayout')
 
 @section('content')
+@include('server.components.navbar')
 <div class="container mt-5">
     <h2 class="mb-4 text-center">eBook Management</h2>
 

@@ -1,6 +1,7 @@
 @extends('server.layouts.masterlayout')
 
 @section('content')
+@include('server.components.navbar')
 <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="text-primary">Course Management</h2>

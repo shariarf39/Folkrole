@@ -1,6 +1,7 @@
 @extends('server.layouts.masterlayout')
 
 @section('content')
+@include('server.components.navbar')
 
 <div class="container mt-4">
     <h3 class="mb-4 text-center">users Management</h3>

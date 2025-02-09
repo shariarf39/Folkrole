@@ -4,28 +4,45 @@
 document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.getElementById('nav-links');
+    const body = document.body;
+    const header = document.querySelector('#header');
 
-    menuToggle.addEventListener('click', () => {
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent click event from propagating to the document
         // Toggle the visibility of the navigation links
         navLinks.classList.toggle('show');
-        document.body.classList.toggle('nav-open');
+        body.classList.toggle('nav-open');
 
-        // Check if the nav-links has the "show" class to determine the icon
+        // Change the menu icon based on visibility of the navbar
         if (navLinks.classList.contains('show')) {
             menuToggle.innerHTML = '<i class="fa-solid fa-x"></i>'; // Close icon
         } else {
-            menuToggle.innerHTML = '<i class="fa-solid fa-bars menu-toggle" id="menu-toggle"></i>'; // Bars icon
+            menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>'; // Bars icon
         }
+    });
+
+    // Close the menu if clicked outside of the navbar
+    document.addEventListener('click', (e) => {
+        if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+            navLinks.classList.remove('show');
+            body.classList.remove('nav-open');
+            menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>'; // Bars icon
+        }
+    });
+
+    // Close the navbar on scroll
+    window.addEventListener('scroll', () => {
+        if (navLinks.classList.contains('show')) {
+            navLinks.classList.remove('show');
+            body.classList.remove('nav-open');
+            menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>'; // Bars icon
+        }
+
+        // Sticky Navbar Fix
+        header.classList.toggle('sticky', window.scrollY > 100);
     });
 });
 
-
-
-// Sticky Navbar Fix
-let header = document.querySelector('#header');
-window.addEventListener('scroll', () => {
-    header.classList.toggle('sticky', window.scrollY > 100);
-});
 
 
 

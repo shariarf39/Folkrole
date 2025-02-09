@@ -50,7 +50,7 @@
 
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
-                    <a href="index.html" class="app-brand-link">
+                    <a href="{{route('home')}}" class="app-brand-link">
                         <span class="app-brand-logo demo">
                             <div class="mt-4">
                                 <img src="img/bifcd_lgo.png" alt="girl-doing-yoga-light" width="140" class="img-fluid" data-app-dark-img="illustrations/girl-doing-yoga-dark.png" data-app-light-img="illustrations/girl-doing-yoga-light.png" />
@@ -69,7 +69,7 @@
                 <ul class="menu-inner py-1">
                     <!-- Dashboard -->
                     <li class="menu-item active">
-                        <a href="#" class="menu-link">
+                        <a href="{{route('adminDashboard')}}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div data-i18n="Analytics">Dashboard</div>
                         </a>
@@ -134,6 +134,8 @@
                             <div data-i18n="Basic">Purchase Ebook</div>
                         </a>
                     </li>
+
+                    </ul>
                   
             </aside>
 

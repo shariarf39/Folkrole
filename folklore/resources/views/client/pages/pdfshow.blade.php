@@ -2,18 +2,16 @@
     <div class="container">
         <div class="text-center">
             <h2 class="preview-title">Preview</h2>
-            @if($hasPurchased)
-                <p class="preview-notice">
+            <div class="divider"></div>
+            <p class="preview-notice">
+                @if($hasPurchased)
                     You have purchased this book. <br> 
                     <strong>Enjoy reading the full book!</strong>
-                </p>
-            @else
-                <p class="preview-notice">
+                @else
                     You can only read the first 10 pages. <br> 
                     <strong>Purchase the full book to continue reading.</strong>
-                </p>
-            @endif
-            <div class="divider"></div>
+                @endif
+            </p>
         </div>
         <div id="pdf-container" class="pdf-preview"></div>
     </div>
@@ -23,31 +21,37 @@
     /* Custom Styles for Preview Section */
     .preview-section {
         background-color: #f8f9fa;
-        padding: 4rem 0;
+        padding: 1rem 0 2rem 0;
         margin: 2rem auto;
         border-radius: 12px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
     .preview-title {
-        font-family: 'Merriweather', serif;
+        font-family: 'Pacifico', cursive;
         font-size: 2.5rem;
         font-weight: 700;
-        color: #2c3e50;
+        background: linear-gradient(45deg, red, rgb(255, 0, 255), aqua);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
         margin-bottom: 1rem;
+        text-align: center;
     }
 
     .preview-notice {
-        font-size: 1.1rem;
+        font-size: 1.3rem;
         color: #e74c3c;
         font-weight: 500;
         margin-bottom: 1.5rem;
         line-height: 1.6;
+        text-align: center;
     }
 
     .preview-notice strong {
         color: #2c3e50;
         font-weight: 600;
+        font-size: 1.3rem;
     }
 
     .divider {
@@ -57,10 +61,6 @@
         border-radius: 2px;
         margin: 0 auto 2rem;
         transition: width 0.3s ease;
-    }
-
-    .preview-section:hover .divider {
-        width: 150px;
     }
 
     .pdf-preview {
@@ -148,7 +148,7 @@
                 var canvas = document.createElement("canvas");
                 pdfContainer.appendChild(canvas);
                 var context = canvas.getContext("2d");
-                
+
                 var viewport = page.getViewport({ scale: 1.5 }); // Adjust scale for better readability
                 canvas.width = viewport.width;
                 canvas.height = viewport.height;

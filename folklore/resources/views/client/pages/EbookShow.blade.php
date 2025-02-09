@@ -59,6 +59,7 @@
             background: #fff3cd;
             border: none;
             border-radius: 10px;
+            font-size: 1rem;
         }
         .modal-content {
             border: none;
@@ -77,14 +78,56 @@
             box-shadow: 0 0 0 0.2rem rgba(106, 17, 203, 0.25);
         }
 
-        .acc_num,
-        .bkash,
+        .acc_num{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: .2rem  1rem .2rem 2.5rem;
+            background-color: #cdd3bb;
+            margin: 0 3rem;
+            border-radius: 10px;
+        }
+
+        .acc_num p{
+            margin: .3rem 0;
+        }
+
+        .mobile_banking{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 1rem  1rem .5rem 2.5rem;
+            background-color: #cdd3bb;
+            margin: 2rem 3rem;
+            border-radius: 10px;
+        }
+        
+        .bkash{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: .2rem  1rem .2rem 0;
+        }
+        
         .nagad {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
-            padding: .5rem  1rem .5rem 2.5rem;
+            padding: .2rem  1rem .2rem 0;
+        }
+
+        @media screen and (max-width: 400px) {
+            .mobile_banking{
+                margin: 1rem 2rem;
+            }
+            .acc_num{
+                margin: 1rem 2rem;
+            }
+            
         }
     </style>
 </head>
@@ -113,6 +156,10 @@
                         @else
                             <div class="alert alert-warning">
                                 <strong>Note:</strong> You can preview only the first 10 pages. Purchase the full eBook to access all pages.
+                            </div>
+
+                            <div class="alert alert-warning">
+                                <strong>Support:</strong> &nbsp;+880 1755-513176
                             </div>
 
                             <div class="mt-4 text-center">
@@ -144,7 +191,9 @@
                 </div>
 
 <div class="payment_items" style="padding: 20px 0; font-family: Arial;">
-        <div class="bkash">
+        <div class="mobile_banking">
+            <p style="color:red;"> Mobile Banking (Personal)</p>
+            <div class="bkash">
             <p class="acc_no" style="font-size: 12px; margin:0;"><span style="font-size: 12px; color: #2575fc; font-weight:600;">Bkash: &nbsp;</span>
                 +880 1755-513176 
                 <i class="fas fa-copy" 
@@ -160,17 +209,25 @@
                    onclick="copyToClipboard('+880 1755-513176')"></i>
             </p>
         </div>
+        </div>
 
 
     <div class="acc_num">
-        <p style="font-size: 12px;"><span style="font-size: 12px; color: #2575fc; font-weight:600;">Account Holder:</span> PROFESSOR DR ANWARUL KARIM</p>
+        <p style="color:red;">Bank Information</p>
+        <p style="font-size: 12px;"><span style="font-size: 12px; color: #2575fc; font-weight:600;">Account Holder:</span> PROFESSOR DR ANWARUL KARIM
+    <i class="fas fa-copy" 
+                   style="cursor: pointer; margin-left: 5px;" 
+                   onclick="copyToClipboard('PROFESSOR DR ANWARUL KARIM')"></i></p>
         <p class="acc_no" style="font-size: 12px;"><span style="font-size: 12px; color: #2575fc; font-weight:600;">Account Number: &nbsp;</span>
             1121005441202 
             <i class="fas fa-copy" 
                style="cursor: pointer; margin-left: 5px;" 
                onclick="copyToClipboard('1121005441202')"></i>
         </p>
-        <P style="font-size: 12px;"><span style="font-size: 12px; color: #2575fc; font-weight:600;">Bank Name:</span>&nbsp; Mercantile Bank</P>
+        <P style="font-size: 12px;"><span style="font-size: 12px; color: #2575fc; font-weight:600;">Bank Name:</span>&nbsp; Mercantile Bank PLC
+    <i class="fas fa-copy" 
+                   style="cursor: pointer; margin-left: 5px;" 
+                   onclick="copyToClipboard('Mercantile Bank PLC')"></i></P>
         <p style="font-size: 12px;"><span style="font-size: 12px; color: #2575fc; font-weight:600;">Branch:</span> &nbsp; Banani</p>
     </div>
 
@@ -185,12 +242,12 @@
                         <div class="mb-3">
                             <label class="form-label">Payment Method</label>
                             <select name="payment_method" class="form-select" required>
+                                <option value="">Select Payment Method</option>
                                 <option value="Bkash">Bkash</option>
                                 <option value="Nagad">Nagad</option>
                                 <option value="Account">Bank</option>
                             </select>
                         </div>
-
                         <div class="mb-3">
                             <label class="form-label">Phone Number</label>
                             <input type="text" name="phone_number" class="form-control" required>

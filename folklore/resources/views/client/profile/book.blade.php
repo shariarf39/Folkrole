@@ -45,16 +45,15 @@
                                     <td>{{ $ebook->payment_method }}</td>
                                     <td>Tk. {{ number_format($ebook->offerprice, 2) }}</td>
                                     <td>
-                                        <form action="" method="POST">
-                                            @csrf
+                                      
                                             <button type="submit" class="btn btn-sm {{ $ebook->pur_is_active == 2 ? 'btn-success' : 'btn-warning' }}">
                                                 {{ $ebook->pur_is_active == 1 ? 'Pending' : 'Approved' }}
                                             </button>
-                                        </form>
+                    
                                     </td>
                                     <td>
                                         @if($ebook->pur_is_active == 1)
-                                            <a href="" class="btn btn-sm btn-outline-secondary disabled">Please Wait for Approval</a>
+                                            <p class="btn btn-sm btn-outline-secondary disabled">Please Wait for Approval</p>
                                         @elseif($ebook->pur_is_active == 2)
                                             <a href="{{ route('ebooks.show', $ebook->id) }}" class="btn btn-sm btn-outline-primary">Read or Download Book</a>
                                         @endif

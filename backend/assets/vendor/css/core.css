@@ -3606,7 +3606,7 @@ textarea.form-control-lg {
 }
 @media (min-width: 1200px) {
   .navbar-expand-xl {
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: flex-start;
   }
   .navbar-expand-xl .navbar-nav {

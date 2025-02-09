@@ -1,6 +1,7 @@
 @extends('server.layouts.masterlayout')
 
 @section('content')
+@include('server.components.navbar')
 <div class="container mt-5">
     <div class="card shadow-lg">
         <!-- Card Header -->
