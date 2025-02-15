@@ -73,7 +73,7 @@ hr {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    padding: 1rem 1.5rem;
+    padding: 1rem;
     margin: 0 auto;
     width: 100%;
     transition: all 0.5s ease;
@@ -100,7 +100,7 @@ nav {
     align-items: center;
 }
 
-#menu-toggle {
+.container #menu-toggle {
     display: none;
     background: none;
     display: flex;
@@ -143,7 +143,6 @@ nav {
     &:active {
         color: #007bff;
     }
-
     &:focus {
         color: #007bff;
     }
@@ -191,7 +190,7 @@ nav {
 
 
 @media (max-width: 768px) {
-    #menu-toggle i {
+    .container #menu-toggle i {
         display: block;
         justify-content: flex-end;
         align-items: center;
@@ -202,7 +201,7 @@ nav {
 
     .nav-links {
         position: fixed;
-        top: 48px;
+        top: 13%;
         left: 0;
         width: 70%;
         height: auto;
@@ -307,16 +306,7 @@ nav {
     text-transform: capitalize;
 }
 
-@media screen and (max-width: 500px) {
-    .home_text .wlc {
-        font-size: 1.5rem;
-    }
 
-    .home_text .des_home {
-        font-size: .9rem;
-    }
-    
-}
 
 
 /*About Section*/
@@ -346,40 +336,11 @@ nav {
 
 .about .heading,
 .about hr,
-.about-content .about_box p ,
-.about-content a{
+.about-content .about_box p {
     position: relative;
     z-index: 1000;
 }
 
-.about-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.about-content a {
-    color: #00ff00;
-    font-size: 1.1rem;
-    font-weight: 600;
-    font-family: 'pacifico',cursive;
-    text-decoration: none;
-    border-radius: 20px;
-    text-align: center;
-    margin: 2rem 0;
-    padding: .2rem .7rem;
-    transition: color 0.3s ease , border-bottom 0.5s ease;
-    border-bottom: 2px solid #00ff00;
-    border-top: 2px solid red;
-    border-left: 2px solid #007bff;
-    border-right: 2px solid #37fff6;
-    &:hover {
-        color: red;
-        border: #00ff00 2px solid;
-    }
-}
 
 .about_box p {
     color: white;
@@ -387,12 +348,11 @@ nav {
     font-weight: 100;
     font-family: sans-serif;
     text-align: justify;
-    line-height: 22px;
 }
 
 .about_box span {
     color: red;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     font-weight: 600;
     font-family: sans-serif;
 }
@@ -504,84 +464,66 @@ button.nextii:hover {
 
 .services {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    padding: 2rem 1.5rem;
+    padding: 5rem;
     width: 100%;
 }
 
 .service_left {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 450px;
-    padding: 1rem;
-}
-
-.service_left img {
-    width: 100%;
-    max-width: 450px;
-    height: auto;
-}
-
-.service_rights {
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    padding: 1rem 5rem;
+    width: 65%;
 }
 
 .service_right {
-    width: 100%;
-    max-width: 800px;
-    padding: 0 0 0 5rem;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 1rem 2rem 2rem 5rem;
+    width: 35%;
 }
 
-.heading_service h1 {
+.service_right h1 {
     font-size: 2rem;
     font-weight: 600;
-    color: #00ff00;
-    font-family: 'Pacifico', cursive;
-}
-
-.heading_service hr {
-    width: 50%;
-    margin: 0.5rem auto;
+    color: red;
+    font-family: 'pacifico', cursive;
+    text-align: center !important;
 }
 
 .service details {
-    padding: 0.5rem;
-    text-align: left;
+    padding: .5rem;
 }
 
 .service details summary {
     font-size: 1.2rem;
     font-weight: 600;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
+    transition: all 0.3s ease;
 
-.service details summary:hover {
-    color: blue;
+    &:hover {
+        color: blue;
+        cursor: pointer;
+    }
+
+    &:active {
+        color: blue;
+    }
+
+    &:focus {
+        color: blue;
+    }
 }
 
 .service p {
-    padding: 1rem;
+    padding: 1rem 2.2rem;
     letter-spacing: 1px;
-    font-weight: normal;
+    font-weight: bold;
 }
-
-@media screen and (max-width: 768px) {
-    .services {
-        flex-direction: column;
-    }
-
-}
-
-
 
 /* news&Events Section */
 
@@ -593,7 +535,7 @@ button.nextii:hover {
 
 .news-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
     padding: 5rem 4rem;
     justify-content: center;
