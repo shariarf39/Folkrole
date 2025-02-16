@@ -105,7 +105,7 @@
                             <div data-i18n="Basic">eBook</div>
                         </a>
                     </li>
-                    {{--
+                  
 
                         
                     <li class="menu-item">
@@ -127,7 +127,7 @@
                             <i class="fa-solid fa-arrows-down-to-people me-2"></i>
                             <div data-i18n="Basic">News</div>
                         </a>
-                    </li> --}}
+                    </li> 
 
 
                         <!-- Components -->
